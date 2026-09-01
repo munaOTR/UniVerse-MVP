@@ -1,0 +1,83 @@
+name: Repair dashboard runtime
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch dashboard initialization and global client
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('dashboard.html')
+          s=p.read_text(encoding='utf-8')
+
+          old="const _supabase = supabase.createClient(supabaseUrl, supabaseKey);"
+          new="window._supabase = supabase.createClient(supabaseUrl, supabaseKey);\n        const _supabase = window._supabase;"
+          if old not in s: raise SystemExit('Supabase client declaration not found')
+          s=s.replace(old,new,1)
+
+          marker="        async function init() {\n            initTheme();\n            const { data: { session } } = await _supabase.auth.getSession();"
+          replacement="""        function withDashboardTimeout(promise, timeoutMs = 12000) {
+            let timer;
+            return Promise.race([
+                promise,
+                new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Dashboard request timed out')), timeoutMs); })
+            ]).finally(() => clearTimeout(timer));
+        }
+
+        async function getDashboardSession() {
+            const result = await withDashboardTimeout(_supabase.auth.getSession(), 12000);
+            if (result?.error) throw result.error;
+            return result?.data?.session || null;
+        }
+
+        async function init() {
+            initTheme();
+            let session;
+            try {
+                session = await getDashboardSession();
+            } catch (authError) {
+                console.error('Dashboard authentication initialization failed:', authError);
+                const status = document.getElementById('userUniDisplay');
+                if (status) status.innerText = 'Connection error';
+                const campus = document.getElementById('orbitUniName');
+                if (campus) campus.innerText = 'Unable to verify campus';
+                return;
+            }"""
+          if marker not in s: raise SystemExit('Dashboard init marker not found')
+          s=s.replace(marker,replacement,1)
+
+          # Make the profile lookup bounded so a stalled Data API cannot keep the entire dashboard in a loading state.
+          old_query="({ data: profile, error: profileError } = await _supabase\n                .from('profiles')\n                .select('id, full_name, university, bio, avatar_url, wallet_balance, reputation_stars, department, level, interests, badges, is_verified')\n                .eq('id', currentUserId)\n                .maybeSingle());"
+          new_query="({ data: profile, error: profileError } = await withDashboardTimeout(_supabase\n                .from('profiles')\n                .select('id, full_name, university, bio, avatar_url, wallet_balance, reputation_stars, department, level, interests, badges, is_verified')\n                .eq('id', currentUserId)\n                .maybeSingle(), 12000));"
+          if old_query not in s: raise SystemExit('Profile lookup block not found')
+          s=s.replace(old_query,new_query,1)
+
+          # Route the two early independent auth reads through the bounded helper too.
+          old_chat="async getSessionUser(){const {data:{session},error}=await _supabase.auth.getSession();if(error)throw error;return session?.user||null;},"
+          new_chat="async getSessionUser(){const session=await getDashboardSession();return session?.user||null;},"
+          if old_chat in s: s=s.replace(old_chat,new_chat,1)
+
+          old_tutor="const {data:{session}}=await _supabase.auth.getSession();"
+          new_tutor="const session=await getDashboardSession();"
+          if old_tutor in s: s=s.replace(old_tutor,new_tutor,1)
+
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit repair
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dashboard.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'fix: harden dashboard auth and campus initialization'
+          git push
