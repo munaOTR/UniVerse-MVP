@@ -1,0 +1,31 @@
+name: Inject mobile app presentation CSS
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  inject:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject stylesheet link into dashboard only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('dashboard.html')
+          s=p.read_text(encoding='utf-8')
+          link='<link id="universe-mobile-app-css" rel="stylesheet" href="/mobile-app.css">'
+          if 'id="universe-mobile-app-css"' not in s:
+              s=s.replace('</head>', link+'\n</head>', 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit dashboard-only presentation change
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dashboard.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'feat: apply mobile app presentation to dashboard'
+          git push
