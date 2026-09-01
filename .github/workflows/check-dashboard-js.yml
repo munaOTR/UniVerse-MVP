@@ -1,0 +1,31 @@
+name: Check dashboard JavaScript
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Extract inline scripts and syntax-check them
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('dashboard.html').read_text(encoding='utf-8')
+          scripts=re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>',s,re.I|re.S)
+          inline=[x for x in scripts if x.strip() and 'src=' not in x[:50]]
+          if not inline: raise SystemExit('No inline scripts found')
+          Path('/tmp/dashboard-inline.js').write_text('\n\n'.join(inline),encoding='utf-8')
+          print('inline scripts:',len(inline),'bytes:',Path('/tmp/dashboard-inline.js').stat().st_size)
+          PY
+          node --check /tmp/dashboard-inline.js
