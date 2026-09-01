@@ -1,0 +1,85 @@
+name: Apply dashboard runtime fix
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch dashboard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('dashboard.html')
+          s = p.read_text(encoding='utf-8')
+
+          s = s.replace(
+              "const _supabase = supabase.createClient(supabaseUrl, supabaseKey);",
+              "window._supabase = supabase.createClient(supabaseUrl, supabaseKey);\n        const _supabase = window._supabase;",
+              1,
+          )
+
+          marker = "        async function init() {\n            initTheme();\n            const { data: { session } } = await _supabase.auth.getSession();"
+          helper_lines = [
+              "        function withDashboardTimeout(promise, timeoutMs = 12000) {",
+              "            let timer;",
+              "            return Promise.race([",
+              "                promise,",
+              "                new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Dashboard request timed out')), timeoutMs); })",
+              "            ]).finally(() => clearTimeout(timer));",
+              "        }",
+              "",
+              "        async function getDashboardSession() {",
+              "            const result = await withDashboardTimeout(_supabase.auth.getSession(), 12000);",
+              "            if (result?.error) throw result.error;",
+              "            return result?.data?.session || null;",
+              "        }",
+              "",
+              "        async function init() {",
+              "            initTheme();",
+              "            let session;",
+              "            try {",
+              "                session = await getDashboardSession();",
+              "            } catch (authError) {",
+              "                console.error('Dashboard authentication initialization failed:', authError);",
+              "                document.getElementById('userUniDisplay')?.replaceChildren(document.createTextNode('Connection error'));",
+              "                document.getElementById('orbitUniName')?.replaceChildren(document.createTextNode('Unable to verify campus'));",
+              "                return;",
+              "            }",
+          ]
+          replacement = "\n".join(helper_lines)
+          if marker not in s:
+              raise SystemExit('init marker not found')
+          s = s.replace(marker, replacement, 1)
+
+          old_profile = "({ data: profile, error: profileError } = await _supabase\n                .from('profiles')\n                .select('id, full_name, university, bio, avatar_url, wallet_balance, reputation_stars, department, level, interests, badges, is_verified')\n                .eq('id', currentUserId)\n                .maybeSingle());"
+          new_profile = "({ data: profile, error: profileError } = await withDashboardTimeout(_supabase\n                .from('profiles')\n                .select('id, full_name, university, bio, avatar_url, wallet_balance, reputation_stars, department, level, interests, badges, is_verified')\n                .eq('id', currentUserId)\n                .maybeSingle(), 12000));"
+          if old_profile not in s:
+              raise SystemExit('profile query not found')
+          s = s.replace(old_profile, new_profile, 1)
+
+          s = s.replace(
+              "async getSessionUser(){const {data:{session},error}=await _supabase.auth.getSession();if(error)throw error;return session?.user||null;},",
+              "async getSessionUser(){const session=await getDashboardSession();return session?.user||null;},",
+              1,
+          )
+          s = s.replace("const {data:{session}}=await _supabase.auth.getSession();", "const session=await getDashboardSession();", 1)
+          s = s.replace("        window.onload = init;", "        if (document.readyState === 'complete') init(); else window.addEventListener('load', init, { once: true });", 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit dashboard fix
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dashboard.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'fix: make dashboard auth and campus initialization recoverable'
+          git push
