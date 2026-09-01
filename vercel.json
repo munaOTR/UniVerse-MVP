@@ -1,7 +1,0 @@
-{
-  "routes": [
-    { "src": "/dashboard.html", "dest": "/api/dashboard" },
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "handle": "filesystem" }
-  ]
-}
