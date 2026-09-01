@@ -1122,7 +1122,8 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
         // anon key and enforce row-level security on the server. The key below is left for
         // simplicity but could be abused if leaked.
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvcHBmeW5jYmVoaWZuc3B1cHdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg1MDk2MDcsImV4cCI6MjA4NDA4NTYwN30.BuR0SNe1KQmZMl7u8s25hAI-QY_cDZRB2ijUU0JIu_c';
-        const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        window._supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        const _supabase = window._supabase;
 
         let userUniversity = '', userFullName = '', currentUserId = '', selectedFiles = [], selectedLodgeFiles = [], userReputation = 0;
         let currentSessionUser = null;
@@ -1180,9 +1181,31 @@ let appState = {
             }
         }
 
+        function withDashboardTimeout(promise, timeoutMs = 12000) {
+            let timer;
+            return Promise.race([
+                promise,
+                new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Dashboard request timed out')), timeoutMs); })
+            ]).finally(() => clearTimeout(timer));
+        }
+
+        async function getDashboardSession() {
+            const result = await withDashboardTimeout(_supabase.auth.getSession(), 12000);
+            if (result?.error) throw result.error;
+            return result?.data?.session || null;
+        }
+
         async function init() {
             initTheme();
-            const { data: { session } } = await _supabase.auth.getSession();
+            let session;
+            try {
+                session = await getDashboardSession();
+            } catch (authError) {
+                console.error('Dashboard authentication initialization failed:', authError);
+                document.getElementById('userUniDisplay')?.replaceChildren(document.createTextNode('Connection error'));
+                document.getElementById('orbitUniName')?.replaceChildren(document.createTextNode('Unable to verify campus'));
+                return;
+            }
             if (!session || !session.user) {
                 // no active session, send back to login
                 return window.location.href = 'index.html';
@@ -1198,11 +1221,11 @@ let appState = {
             // for Orbit. Session metadata can be stale/missing after refresh or login.
             let profile = null;
             let profileError = null;
-            ({ data: profile, error: profileError } = await _supabase
+            ({ data: profile, error: profileError } = await withDashboardTimeout(_supabase
                 .from('profiles')
                 .select('id, full_name, university, bio, avatar_url, wallet_balance, reputation_stars, department, level, interests, badges, is_verified')
                 .eq('id', currentUserId)
-                .maybeSingle());
+                .maybeSingle(), 12000));
 
             if (profileError) {
                 console.error('Failed to resolve authenticated profile:', profileError);
@@ -2050,7 +2073,7 @@ function subscribeChatPresence(){
 }
 
 const chat = {
-    async getSessionUser(){const {data:{session},error}=await _supabase.auth.getSession();if(error)throw error;return session?.user||null;},
+    async getSessionUser(){const session=await getDashboardSession();return session?.user||null;},
     async loadCurrentProfile(){if(!currentUserId)return null;const {data,error}=await _supabase.from('profiles').select('id, full_name, avatar_url, university, department, level, bio, reputation_stars, is_verified').eq('id',currentUserId).maybeSingle();if(error)throw error;chatState.currentProfile=data||{id:currentUserId,full_name:userFullName||'Student',university:userUniversity||''};return chatState.currentProfile;},
     async searchStudents(query=''){if(!currentUserId)return [];const clean=query.trim();if(clean.length<2)return [];const {data,error}=await _supabase.rpc('campus_chat_search_students',{p_query:clean});if(error)throw error;return (data||[]).map(s=>({...s,username:chatDisplayUsername(s)}));},
     async loadConversations(){
@@ -2525,7 +2548,7 @@ async function checkReputationForPosting() {
         alert(`Access Denied: You currently have ${profile.reputation_stars || 0} stars. You need 3 stars to Scout Lodges.`);
     }
 }
-        window.onload = init;
+        if (document.readyState === 'complete') init(); else window.addEventListener('load', init, { once: true });
         window.onerror = function(message, source, lineno, colno, error) {
             console.error('Unhandled error:', message, 'at', source + ':' + lineno + ':' + colno, error);
             // Could send to analytics/logging service here
@@ -3277,7 +3300,7 @@ async function studyTutorAsk(question){
     if(!question)return;
     studyTutorAppend('user',question);studyTutorConversation.push({role:'user',content:question});input.value='';send.disabled=true;status.classList.remove('hidden');status.textContent='Thinking…';
     try{
-        const {data:{session}}=await _supabase.auth.getSession();
+        const session=await getDashboardSession();
         if(!session?.access_token)throw new Error('Your session has expired. Please sign in again.');
         const c=studyTutorCourseContext();
         const res=await fetch(`${supabaseUrl}/functions/v1/study-ai-tutor`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${session.access_token}`,'apikey':supabaseKey},body:JSON.stringify({question,course_code:c.course_code,course_title:c.course_title,level:c.level,conversation:studyTutorConversation.slice(-8)})});
