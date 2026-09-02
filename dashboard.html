@@ -206,7 +206,62 @@
             .chat-composer { margin:.4rem; }
         }
 
-/* Orbit-only product styling */
+
+        /* Orbit-only surgical enhancements */
+        .orbit-page{width:100%;min-width:0}
+        .orbit-shell{width:100%;max-width:760px;margin:0 auto}
+        .orbit-feed-center{width:100%;max-width:680px;margin:0 auto}
+        .orbit-action.like-count{cursor:pointer}
+        .orbit-notification-badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#ef4444;color:#fff;border:2px solid #0b0f1a;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;line-height:1;box-shadow:0 4px 12px rgba(239,68,68,.35)}
+        .orbit-head-actions button{position:relative}
+        .orbit-mention-picker{position:relative;z-index:40}
+        .orbit-mention-list{position:absolute;left:0;right:0;top:calc(100% + .35rem);max-height:250px;overflow:auto;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(13,18,31,.99);box-shadow:0 25px 70px rgba(0,0,0,.45);padding:.35rem}
+        .orbit-mention-list.hidden{display:none}
+        .orbit-mention-item{display:flex;align-items:center;gap:.65rem;width:100%;padding:.65rem;border-radius:11px;text-align:left}
+        .orbit-mention-item:hover{background:rgba(255,255,255,.06)}
+        .orbit-profile-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+        .orbit-profile-action{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:40px;padding:.65rem .85rem;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);color:#cbd5e1;font-size:.68rem;font-weight:800}
+        .orbit-profile-action.primary{background:#22c55e;color:#052e16;border-color:#22c55e}
+        .orbit-profile-section{margin-top:1rem}
+        .orbit-tagged-label{display:flex;align-items:center;gap:.45rem;color:#4ade80;font-size:.6rem;font-weight:800;padding:.25rem .1rem}
+        body.light-mode .orbit-notification-badge{border-color:#fff}
+        body.light-mode .orbit-mention-list{background:#fff;border-color:rgba(15,23,42,.08)}
+        body.light-mode .orbit-mention-item:hover{background:rgba(15,23,42,.05)}
+        body.light-mode .orbit-profile-action{background:#fff;border-color:rgba(15,23,42,.08);color:#334155}
+        body.light-mode .orbit-profile-action.primary{color:#052e16}
+        .orbit-fullscreen{position:fixed;inset:0;z-index:180;display:flex;flex-direction:column;background:#0b0f1a;color:#fff;overflow:hidden}
+        .orbit-fullscreen.hidden{display:none}
+        .orbit-fullscreen-header{height:64px;flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(11,15,26,.96);backdrop-filter:blur(18px)}
+        .orbit-fullscreen-body{flex:1;min-height:0;overflow-y:auto;width:100%;padding:1rem}
+        .orbit-fullscreen-inner{width:100%;max-width:760px;margin:0 auto}
+        .orbit-fullscreen-list{display:grid;gap:.65rem}
+        .orbit-person-row{display:flex;align-items:center;gap:.75rem;width:100%;padding:.8rem;border:1px solid rgba(255,255,255,.07);border-radius:16px;background:rgba(255,255,255,.025);text-align:left}
+        .orbit-person-row:hover{background:rgba(255,255,255,.05)}
+        .orbit-notification-row{display:flex;gap:.75rem;align-items:flex-start;width:100%;padding:.9rem;border-bottom:1px solid rgba(255,255,255,.06);text-align:left}
+        .orbit-notification-row.unread{background:rgba(34,197,94,.045)}
+        .orbit-notification-icon{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(34,197,94,.08);color:#4ade80}
+        body.light-mode .orbit-fullscreen{background:#fff;color:#0f172a}
+        body.light-mode .orbit-fullscreen-header{background:rgba(255,255,255,.96);border-color:rgba(15,23,42,.07)}
+        body.light-mode .orbit-person-row{background:#fff;border-color:rgba(15,23,42,.07)}
+        body.light-mode .orbit-notification-row{border-color:rgba(15,23,42,.06)}
+        @media(max-width:640px){
+            .orbit-fullscreen-header{height:58px;padding:.65rem .75rem}
+            .orbit-fullscreen-body{padding:.75rem}
+            .orbit-page{padding-bottom:1rem}
+            .orbit-head{align-items:center}
+            .orbit-head-actions{flex:0 0 auto}
+            .orbit-search{min-height:44px}
+            .orbit-composer-card{padding:.45rem}
+            .orbit-composer-card button{padding:.6rem}
+            .orbit-feed-center{max-width:100%}
+            .orbit-post{border-radius:18px}
+            .orbit-content{font-size:.8rem}
+            .orbit-actions{gap:.1rem}
+            .orbit-action{min-height:40px;padding:.4rem .45rem}
+            .orbit-action span{font-size:.62rem}
+        }
+
+        /* Orbit-only product styling */
 .orbit-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:.5rem 0}.orbit-kicker{font-size:9px;font-weight:900;letter-spacing:.22em;color:#22c55e;text-transform:uppercase}.orbit-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px #22c55e}.orbit-head h2{font-size:clamp(1.35rem,4vw,2rem);font-weight:700;letter-spacing:-.04em;margin:.25rem 0}.orbit-head p{font-size:.7rem;color:#64748b;font-weight:600}.orbit-head-actions{display:flex;gap:.4rem}.orbit-head-actions button,.orbit-close{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#94a3b8}.orbit-search{display:flex;align-items:center;gap:.6rem;padding:.65rem .8rem;border:1px solid rgba(255,255,255,.08);border-radius:15px;background:rgba(255,255,255,.025)}.orbit-search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:inherit;font-size:.75rem}.orbit-search i{color:#64748b}.orbit-composer-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:22px;padding:.6rem}.orbit-composer-card button{width:100%;display:flex;align-items:center;gap:.7rem;padding:.65rem;border-radius:16px;text-align:left}.orbit-composer-card button:hover{background:rgba(255,255,255,.035)}.orbit-composer-card span{min-width:0;flex:1}.orbit-composer-card strong,.orbit-composer-card small{display:block}.orbit-composer-card strong{font-size:.78rem}.orbit-composer-card small{font-size:.62rem;color:#64748b;margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.orbit-composer-card b{background:#22c55e;color:#052e16;border-radius:10px;padding:.5rem .7rem;font-size:.58rem}.orbit-avatar{width:40px;height:40px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#22c55e,#166534);color:#fff;font-weight:900;font-size:.7rem}.orbit-avatar img{width:100%;height:100%;object-fit:cover}.orbit-tabs{display:flex;gap:.2rem;border-bottom:1px solid rgba(255,255,255,.07)}.orbit-tabs button{padding:.65rem .85rem;color:#64748b;font-size:.68rem;font-weight:800;position:relative}.orbit-tabs button.active{color:#fff}.orbit-tabs button.active:after{content:"";position:absolute;left:.75rem;right:.75rem;bottom:-1px;height:2px;background:#22c55e}.orbit-new-banner{position:sticky;top:72px;z-index:20;text-align:center}.orbit-new-banner button{border:1px solid rgba(34,197,94,.25);background:rgba(11,15,26,.95);color:#86efac;border-radius:99px;padding:.5rem .8rem;font-size:.62rem;font-weight:800}.orbit-search-state{font-size:.65rem;color:#64748b;padding:.7rem}.orbit-post{padding:1rem;border-radius:22px;overflow:visible}.orbit-post-head{display:flex;align-items:center;gap:.6rem}.orbit-author{display:flex;align-items:center;gap:.65rem;text-align:left;min-width:0}.orbit-author-meta{min-width:0}.orbit-author-name{display:block;font-size:.78rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.orbit-author-info{display:block;font-size:.55rem;color:#64748b}.orbit-post-time{font-size:.53rem;color:#22c55e;font-weight:700}.orbit-menu-wrap{margin-left:auto;position:relative}.orbit-menu{width:34px;height:34px;border-radius:10px;color:#64748b}.orbit-menu:hover{background:rgba(255,255,255,.05);color:#fff}.orbit-menu-panel{position:absolute;right:0;top:38px;width:180px;padding:.3rem;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(13,18,31,.98);z-index:30;box-shadow:0 20px 60px rgba(0,0,0,.35)}.orbit-menu-panel button{width:100%;padding:.65rem;color:#cbd5e1;text-align:left;border-radius:10px;font-size:.65rem;font-weight:700}.orbit-menu-panel button:hover{background:rgba(255,255,255,.06)}.orbit-menu-panel .danger{color:#fca5a5}.orbit-content{font-size:.82rem;line-height:1.65;color:#cbd5e1;white-space:pre-wrap;overflow-wrap:anywhere}.orbit-tag{color:#4ade80;font-weight:700}.orbit-media{display:grid;gap:5px}.orbit-media.one{grid-template-columns:1fr}.orbit-media.two{grid-template-columns:1fr 1fr}.orbit-media.three{grid-template-columns:1.35fr .65fr}.orbit-media.four{grid-template-columns:1fr 1fr}.orbit-media button{position:relative;overflow:hidden;border-radius:15px;background:#020617;border:1px solid rgba(255,255,255,.08);cursor:pointer}.orbit-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:1.25}.orbit-media.one img{aspect-ratio:1.65;max-height:480px}.orbit-more:after{content:attr(data-more);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,.6);color:#fff;font-size:1.1rem;font-weight:900}.orbit-actions{display:flex;gap:.15rem;border-top:1px solid rgba(255,255,255,.06);padding-top:.6rem}.orbit-action{display:inline-flex;align-items:center;gap:.4rem;min-height:38px;padding:.45rem .55rem;border-radius:10px;color:#64748b;font-size:.64rem;font-weight:800}.orbit-action:hover{background:rgba(255,255,255,.04);color:#cbd5e1}.orbit-action.liked{color:#4ade80}.orbit-action.saved{color:#facc15}.orbit-comments{border-top:1px solid rgba(255,255,255,.06);padding-top:.7rem}.orbit-comment-list{display:grid;gap:.5rem;max-height:300px;overflow:auto}.orbit-comment{display:flex;gap:.5rem;padding:.55rem;border-radius:12px;background:rgba(255,255,255,.025)}.orbit-comment-body{min-width:0;flex:1}.orbit-comment-name{font-size:.6rem;font-weight:800;color:#4ade80}.orbit-comment-time{font-size:.5rem;color:#64748b;margin-left:.3rem}.orbit-comment-text{font-size:.67rem;color:#cbd5e1;line-height:1.5;margin-top:.1rem;overflow-wrap:anywhere}.orbit-comment-input{display:flex;gap:.4rem;margin-top:.6rem}.orbit-comment-input input{flex:1;min-width:0;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:.65rem;color:inherit;font-size:.68rem;outline:0}.orbit-comment-input button{width:38px;border-radius:11px;background:#22c55e;color:#052e16}.orbit-modal{background:#0b0f1a;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 100px rgba(0,0,0,.55)}.orbit-textarea{width:100%;resize:none;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:17px;padding:.9rem;color:#fff;outline:0;font-size:.82rem}.orbit-textarea:focus{border-color:#22c55e}.orbit-upload{display:flex;align-items:center;gap:.6rem;border:1px dashed rgba(255,255,255,.14);border-radius:15px;padding:.8rem;color:#94a3b8;font-size:.7rem;font-weight:800;cursor:pointer}.orbit-upload i{color:#22c55e}.orbit-upload small{margin-left:auto;color:#475569;font-size:.52rem}.orbit-submit{width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem;border-radius:15px;background:#22c55e;color:#052e16;font-size:.7rem;font-weight:900}.orbit-submit:disabled{opacity:.55}.orbit-status{padding:.6rem .7rem;border-radius:11px;background:rgba(255,255,255,.04);font-size:.62rem;color:#94a3b8}.orbit-empty{text-align:center;padding:2rem 1rem;color:#64748b}.orbit-empty>div{width:50px;height:50px;border-radius:50%;margin:auto auto 1rem;display:flex;align-items:center;justify-content:center;color:#22c55e;background:rgba(34,197,94,.06)}.orbit-empty h4{color:inherit;font-size:.85rem;font-weight:800}.orbit-empty p{font-size:.65rem;max-width:300px;margin:.35rem auto;line-height:1.5}
 body.light-mode .orbit-search,body.light-mode .orbit-composer-card,body.light-mode .orbit-post{background:#fff;border-color:rgba(15,23,42,.07)}body.light-mode .orbit-content{color:#334155}body.light-mode .orbit-modal{background:#fff}body.light-mode .orbit-menu-panel{background:#fff}.orbit-skeleton{height:150px;border-radius:22px;background:linear-gradient(90deg,rgba(255,255,255,.025),rgba(255,255,255,.07),rgba(255,255,255,.025));background-size:200%;animation:orbitShimmer 1.3s infinite}@keyframes orbitShimmer{to{background-position:-200%}}
 @media(max-width:640px){.orbit-head h2{font-size:1.35rem}.orbit-post{padding:.85rem}.orbit-actions{overflow-x:auto}.orbit-action{white-space:nowrap}.orbit-upload{flex-wrap:wrap}.orbit-upload small{width:100%;margin-left:0}.orbit-modal{padding:1rem!important}.orbit-media.three{grid-template-columns:1fr 1fr}.orbit-media.three button:first-child{grid-column:span 2}.orbit-new-banner{top:62px}}
@@ -399,13 +454,13 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
         <div id="orbitPage" class="orbit-page space-y-4 md:space-y-5">
   <section class="orbit-head">
     <div><div class="orbit-kicker"><span class="orbit-live-dot"></span> THE ORBIT</div><h2>What's happening on campus?</h2><p id="orbitUniName">Loading campus...</p></div>
-    <div class="orbit-head-actions"><button type="button" onclick="focusOrbitSearch()" aria-label="Search Orbit"><i class="fas fa-search"></i></button><button type="button" onclick="openOrbitNotifications()" aria-label="Notifications"><i class="far fa-bell"></i></button></div>
+    <div class="orbit-head-actions"><button type="button" onclick="focusOrbitSearch()" aria-label="Search Orbit"><i class="fas fa-search"></i></button><button type="button" onclick="openOrbitNotifications()" aria-label="Notifications"><i class="far fa-bell"></i><span id="orbitNotificationBadge" class="orbit-notification-badge hidden">0</span></button></div>
   </section>
   <div class="orbit-search"><i class="fas fa-search"></i><input id="orbitSearchInput" type="search" placeholder="Search posts, people or #hashtags" autocomplete="off"><button id="orbitSearchClear" class="hidden" type="button" onclick="clearOrbitSearch()"><i class="fas fa-times"></i></button></div>
   <section class="orbit-composer-card"><button type="button" onclick="openPostModal()"><div id="orbitComposerAvatar" class="orbit-avatar">?</div><span><strong>Share with your campus</strong><small>Post an update, photo, question or announcement</small></span><b>POST</b></button></section>
   <div class="orbit-tabs" role="tablist"><button class="active" data-orbit-mode="for-you" onclick="setOrbitFeedMode('for-you')">For You</button><button data-orbit-mode="latest" onclick="setOrbitFeedMode('latest')">Latest</button><button data-orbit-mode="trending" onclick="setOrbitFeedMode('trending')">Trending</button></div>
-  <div id="orbitNewPostsBanner" class="hidden orbit-new-banner"><button onclick="showOrbitNewPosts()"><i class="fas fa-arrow-up"></i> <span id="orbitNewPostsCount">New posts</span></button></div>
-  <div id="orbitSearchState" class="hidden orbit-search-state"></div><div id="orbitFeed" class="space-y-4"></div>
+  <div id="orbitNewPostsBanner" class="hidden orbit-new-banner orbit-feed-center"><button onclick="showOrbitNewPosts()"><i class="fas fa-arrow-up"></i> <span id="orbitNewPostsCount">New posts</span></button></div>
+  <div id="orbitSearchState" class="hidden orbit-search-state orbit-feed-center"></div><div id="orbitFeed" class="orbit-feed-center space-y-4"></div>
 </div>
 
 <div id="lodgePage" class="hidden space-y-4 md:space-y-6 animate-fadeIn">
@@ -452,13 +507,28 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
  <div class="orbit-modal w-full max-w-xl rounded-t-[2rem] sm:rounded-[2rem] p-5 sm:p-6 space-y-4 max-h-[92dvh] overflow-y-auto" role="dialog" aria-modal="true">
   <div class="flex justify-between items-center"><div><p class="orbit-kicker">THE ORBIT</p><h3 class="text-xl font-bold">Create a post</h3></div><button onclick="closePostModal()" class="orbit-close" aria-label="Close"><i class="fas fa-times"></i></button></div>
   <div class="flex items-center gap-3"><div id="postComposerAvatar" class="orbit-avatar">?</div><div><strong id="postComposerName">Scholar</strong><p class="text-[10px] text-slate-500">Campus-only • The Orbit</p></div></div>
-  <textarea id="postContent" maxlength="5000" rows="5" placeholder="What's happening on campus?" class="orbit-textarea"></textarea><div class="flex justify-between text-[10px] text-slate-500"><span>#hashtags and @mentions supported</span><span id="postCharCount">0 / 5000</span></div>
+  <div class="orbit-mention-picker"><textarea id="postContent" maxlength="5000" rows="5" placeholder="What's happening on campus?" class="orbit-textarea"></textarea><div id="orbitMentionList" class="orbit-mention-list hidden"></div></div><div class="flex justify-between text-[10px] text-slate-500"><span>#hashtags and @mentions supported</span><span id="postCharCount">0 / 5000</span></div>
   <label class="orbit-upload"><i class="fas fa-images"></i><span>Attach photos</span><small>10 images max • 10MB each</small><input type="file" id="postImage" accept="image/*" class="hidden" onchange="previewFiles()" multiple></label>
   <div id="imagePreviewContainer" class="grid grid-cols-3 sm:grid-cols-4 gap-2"></div><div id="postSubmitStatus" class="hidden orbit-status"></div>
   <button onclick="submitPost()" id="submitBtn" class="orbit-submit"><span>POST</span><i class="fas fa-arrow-up"></i></button>
  </div></div>
-<div id="orbitNotificationModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden z-[115] flex items-end sm:items-center justify-center p-0 sm:p-4"><div class="orbit-modal w-full max-w-md rounded-[2rem] p-6"><div class="flex justify-between items-center"><div><p class="orbit-kicker">ORBIT</p><h3 class="text-xl font-bold">Notifications</h3></div><button onclick="closeOrbitNotifications()" class="orbit-close"><i class="fas fa-times"></i></button></div><div class="orbit-empty"><div><i class="far fa-bell"></i></div><h4>No Orbit notifications yet</h4><p>The current codebase has no Orbit notification backend, so no fake notifications are shown.</p></div></div></div>
+<div id="orbitNotificationModal" class="orbit-fullscreen hidden" aria-modal="true" role="dialog"><header class="orbit-fullscreen-header"><div><p class="orbit-kicker">THE ORBIT</p><h3 class="text-lg font-bold">Notifications</h3></div><button onclick="closeOrbitNotifications()" class="orbit-close" aria-label="Close notifications"><i class="fas fa-times"></i></button></header><div class="orbit-fullscreen-body"><div class="orbit-fullscreen-inner"><div id="orbitNotificationList" class="orbit-fullscreen-list"></div></div></div></div>
 <div id="orbitMediaViewer" class="fixed inset-0 bg-black/95 hidden z-[120] items-center justify-center p-3"><button onclick="closeOrbitMediaViewer()" class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 text-white z-10"><i class="fas fa-times"></i></button><button id="orbitMediaPrev" onclick="stepOrbitMedia(-1)" class="absolute left-3 w-11 h-11 rounded-full bg-white/10 text-white"><i class="fas fa-chevron-left"></i></button><img id="orbitViewerImage" class="max-h-[90dvh] max-w-full object-contain rounded-xl" alt="Orbit media"><button id="orbitMediaNext" onclick="stepOrbitMedia(1)" class="absolute right-3 w-11 h-11 rounded-full bg-white/10 text-white"><i class="fas fa-chevron-right"></i></button></div>
+<div id="orbitLikesView" class="orbit-fullscreen hidden" aria-modal="true" role="dialog">
+  <header class="orbit-fullscreen-header">
+    <div><p class="orbit-kicker">THE ORBIT</p><h3 id="orbitLikesTitle" class="text-lg font-bold">Likes</h3></div>
+    <button onclick="closeOrbitLikes()" class="orbit-close" aria-label="Close likes"><i class="fas fa-times"></i></button>
+  </header>
+  <div class="orbit-fullscreen-body"><div class="orbit-fullscreen-inner"><div id="orbitLikesList" class="orbit-fullscreen-list"></div></div></div>
+</div>
+<div id="orbitPublicProfilePage" class="orbit-fullscreen hidden" aria-modal="true" role="dialog">
+  <header class="orbit-fullscreen-header">
+    <div><p class="orbit-kicker">CAMPUS PROFILE</p><h3 class="text-lg font-bold">Student profile</h3></div>
+    <button onclick="closeOrbitPublicProfilePage()" class="orbit-close" aria-label="Back to Orbit"><i class="fas fa-arrow-left"></i></button>
+  </header>
+  <div class="orbit-fullscreen-body"><div id="orbitPublicProfileBody" class="orbit-fullscreen-inner"></div></div>
+</div>
+
 
 <div id="scoutModal" class="fixed inset-0 bg-black/95 hidden z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4 pb-32">
         <div class="bg-[#0b0f1a] w-full sm:max-w-lg rounded-t-[2.5rem] sm:rounded-[2.5rem] border border-white/10 p-3 sm:p-4 md:p-8 space-y-2 sm:space-y-3 md:space-y-4 max-h-[80vh] overflow-y-auto">
@@ -1238,6 +1308,7 @@ let appState = {
 
             // Orbit realtime is initialized only after the authenticated campus is known.
             setupOrbitRealtime();
+            updateOrbitNotificationBadge();
 
             loadFeed(true);
             loadLodgeFeed(true);
@@ -2790,7 +2861,7 @@ async function loadErrands(reset = false) {
 /* Orbit-only product logic — normalized Supabase integration */
 const ORBIT_POST_COLUMNS='id,content,images,school_tag,poster_name,poster_id,created_at,updated_at,edited_at,status,visibility';
 const ORBIT_COMMENT_PAGE_SIZE=25;
-const orbitState={mode:'for-you',posts:new Map(),profiles:new Map(),search:'',newPosts:[],media:[],mediaIndex:0,saved:new Set(),busy:new Set(),commentCursors:new Map(),comments:new Map(),commentLoading:new Set(),replyTo:new Map(),pendingComments:new Map(),pendingDeletes:new Set(),pendingLikes:new Map(),pendingSaves:new Map(),realtimeSeen:new Set(),timer:null};
+const orbitState={mode:'for-you',posts:new Map(),profiles:new Map(),search:'',newPosts:[],media:[],mediaIndex:0,saved:new Set(),busy:new Set(),commentCursors:new Map(),comments:new Map(),commentLoading:new Set(),replyTo:new Map(),pendingComments:new Map(),pendingDeletes:new Set(),pendingLikes:new Map(),pendingSaves:new Map(),realtimeSeen:new Set(),timer:null,profilePostIds:new Set(),activePublicProfileId:null};
 let orbitFeedCursor=null;
 let orbitFeedLoadedAll=false;
 let orbitRealtimeChannel=null;
@@ -2823,13 +2894,78 @@ function clearOrbitSearch(){
     input?.focus();
 }
 
-function openOrbitNotifications(){
-    document.getElementById('orbitNotificationModal')?.classList.remove('hidden');
+async function openOrbitLikes(id){
+    const p=orbitState.posts.get(id);
+    if(!p)return;
+    const view=document.getElementById('orbitLikesView'),list=document.getElementById('orbitLikesList'),title=document.getElementById('orbitLikesTitle');
+    if(!view||!list)return;
+    title.textContent=`${Number(p.likeCount)||0} ${Number(p.likeCount)===1?'like':'likes'}`;
+    list.innerHTML='<div class="orbit-skeleton" style="height:80px"></div><div class="orbit-skeleton" style="height:80px"></div>';
+    view.classList.remove('hidden');
+    try{
+        const {data,error}=await _supabase.from('orbit_post_likes').select('user_id,created_at').eq('post_id',id).order('created_at',{ascending:false});
+        if(error)throw error;
+        const ids=[...new Set((data||[]).map(x=>x.user_id).filter(Boolean))];
+        if(!ids.length){list.innerHTML='<div class="orbit-empty"><div><i class="far fa-heart"></i></div><h4>No likes yet</h4><p>Be the first person to like this post.</p></div>';return;}
+        const {data:profiles,error:profileError}=await _supabase.from('profiles').select('id,full_name,avatar_url,university,department,level').in('id',ids);
+        if(profileError)throw profileError;
+        const map=new Map((profiles||[]).map(x=>[x.id,x]));
+        list.innerHTML=(data||[]).map(x=>{
+            const u=map.get(x.user_id)||{};
+            return `<button type="button" class="orbit-person-row" onclick="closeOrbitLikes();openOrbitAuthor('${oe(x.user_id)}')">${orbitAvatar(u.full_name||'Student',u.avatar_url)}<span class="min-w-0 flex-1"><strong class="block text-sm truncate">${oe(u.full_name||'Student')}</strong><span class="block text-[10px] text-slate-500 truncate">${oe(u.university||userUniversity)}${u.department?' • '+oe(u.department):''}</span></span><i class="fas fa-chevron-right text-slate-600"></i></button>`;
+        }).join('');
+    }catch(e){
+        console.error('Orbit likes load failed',e);
+        list.innerHTML='<div class="orbit-empty"><div><i class="fas fa-wifi"></i></div><h4>Could not load likes</h4><p>Check your connection and try again.</p></div>';
+    }
 }
+function closeOrbitLikes(){document.getElementById('orbitLikesView')?.classList.add('hidden');}
 
-function closeOrbitNotifications(){
-    document.getElementById('orbitNotificationModal')?.classList.add('hidden');
+async function updateOrbitNotificationBadge(){
+    const badge=document.getElementById('orbitNotificationBadge');
+    if(!badge||!currentUserId)return;
+    try{
+        const {count,error}=await _supabase.from('notifications').select('id',{count:'exact',head:true}).eq('user_id',currentUserId).eq('is_read',false);
+        if(error)throw error;
+        const n=Number(count)||0;
+        badge.textContent=n>99?'99+':String(n);
+        badge.classList.toggle('hidden',n===0);
+    }catch(e){console.warn('Orbit notification badge failed',e)}
 }
+async function loadOrbitNotifications(){
+    const list=document.getElementById('orbitNotificationList');
+    if(!list||!currentUserId)return;
+    list.innerHTML='<div class="orbit-skeleton" style="height:90px"></div><div class="orbit-skeleton" style="height:90px"></div>';
+    try{
+        const {data,error}=await _supabase.from('notifications').select('id,type,actor_id,title,body,link,is_read,created_at').eq('user_id',currentUserId).order('created_at',{ascending:false}).limit(100);
+        if(error)throw error;
+        if(!data?.length){list.innerHTML='<div class="orbit-empty"><div><i class="far fa-bell"></i></div><h4>No notifications yet</h4><p>Campus activity will appear here as it happens.</p></div>';updateOrbitNotificationBadge();return;}
+        const ids=[...new Set(data.map(n=>n.actor_id).filter(Boolean))];
+        const {data:profiles,error:profileError}=ids.length?await _supabase.from('profiles').select('id,full_name,avatar_url').in('id',ids):{data:[],error:null};
+        if(profileError)throw profileError;
+        const map=new Map((profiles||[]).map(x=>[x.id,x]));
+        list.innerHTML=data.map(n=>{
+            const actor=map.get(n.actor_id)||{};
+            const icon=n.type==='orbit_like'?'fa-heart':n.type==='orbit_comment'?'fa-comment':n.type==='orbit_mention'?'fa-at':'fa-bullhorn';
+            return `<button type="button" class="orbit-notification-row ${n.is_read?'':'unread'}" onclick="handleOrbitNotificationClick('${oe(n.id)}','${oe(n.link||'')}')">${orbitAvatar(actor.full_name||'Campus',actor.avatar_url)}<span class="orbit-notification-icon"><i class="fas ${icon}"></i></span><span class="min-w-0 flex-1"><strong class="block text-sm">${oe(n.title||'Campus update')}</strong><span class="block text-xs text-slate-400 mt-1 break-words">${oe(n.body||'')}</span><span class="block text-[9px] text-slate-600 mt-2">${oe(timeAgo(n.created_at))}</span></span></button>`;
+        }).join('');
+        updateOrbitNotificationBadge();
+    }catch(e){
+        console.error('Orbit notifications load failed',e);
+        list.innerHTML='<div class="orbit-empty"><div><i class="fas fa-wifi"></i></div><h4>Notifications unavailable</h4><p>Your campus notifications could not be loaded right now.</p></div>';
+    }
+}
+async function handleOrbitNotificationClick(id,link){
+    try{await _supabase.from('notifications').update({is_read:true}).eq('id',id).eq('user_id',currentUserId)}catch(e){console.warn('Notification read update failed',e)}
+    await updateOrbitNotificationBadge();
+    if(link&&link.startsWith('#orbit-post-')){
+        closeOrbitNotifications();
+        const postId=link.replace('#orbit-post-','');
+        setTimeout(()=>document.getElementById('post-'+postId)?.scrollIntoView({behavior:'smooth',block:'center'}),50);
+    }else{loadOrbitNotifications();}
+}
+function openOrbitNotifications(){document.getElementById('orbitNotificationModal')?.classList.remove('hidden');loadOrbitNotifications();}
+function closeOrbitNotifications(){document.getElementById('orbitNotificationModal')?.classList.add('hidden');}
 
 function setOrbitReply(postId,commentId){
     const post=orbitState.posts.get(postId);
@@ -2876,12 +3012,12 @@ function orbitClosePublicProfile(){
 function orbitText(v){return oe(v).replace(/(^|\s)(#[\w-]+|@[\w-]+)/g,'$1<span class="orbit-tag">$2</span>')}
 function orbitAvatar(name,url){url=ou(url);return url?`<div class="orbit-avatar"><img src="${oe(url)}" alt="${oe(name||'Student')}" loading="lazy" decoding="async"></div>`:`<div class="orbit-avatar">${oe(oi(name))}</div>`}
 function orbitScore(p){const l=Number(p.likeCount)||0,c=Number(p.commentCount)||0,h=Math.max(1,(Date.now()-new Date(p.created_at))/36e5);return(l*3+c*5)/Math.pow(h,.65)}
-function orbitList(){let a=[...orbitState.posts.values()];if(orbitState.search){const q=orbitState.search.toLowerCase().replace(/^[@#]/,'');a=a.filter(p=>`${p.poster_name||''} ${p.content||''}`.toLowerCase().includes(q))}if(orbitState.mode==='trending')a.sort((x,y)=>orbitScore(y)-orbitScore(x));else if(orbitState.mode==='latest')a.sort((x,y)=>{const t=new Date(y.created_at)-new Date(x.created_at);return t||String(y.id).localeCompare(String(x.id));});else a.sort((x,y)=>orbitScore(y)*.2+new Date(y.created_at)/1e11-(orbitScore(x)*.2+new Date(x.created_at)/1e11));return a}
+function orbitList(){let a=[...orbitState.posts.values()].filter(p=>!orbitState.profilePostIds.has(p.id));if(orbitState.search){const q=orbitState.search.toLowerCase().replace(/^[@#]/,'');a=a.filter(p=>`${p.poster_name||''} ${p.content||''}`.toLowerCase().includes(q))}if(orbitState.mode==='trending')a.sort((x,y)=>orbitScore(y)-orbitScore(x));else if(orbitState.mode==='latest')a.sort((x,y)=>{const t=new Date(y.created_at)-new Date(x.created_at);return t||String(y.id).localeCompare(String(x.id));});else a.sort((x,y)=>orbitScore(y)*.2+new Date(y.created_at)/1e11-(orbitScore(x)*.2+new Date(x.created_at)/1e11));return a}
 function orbitMedia(p){const a=(p.images||[]).map(ou).filter(Boolean);if(!a.length)return'';const shown=a.slice(0,4),cls=shown.length===1?'one':shown.length===2?'two':shown.length===3?'three':'four',more=a.length-4;return`<div class="orbit-media ${cls}">${shown.map((u,i)=>`<button type="button" class="${more&&i===3?'orbit-more':''}" ${more&&i===3?`data-more="+${more}"`:''} onclick="openOrbitMediaViewer('${oe(p.id)}',${i})"><img src="${oe(u)}" alt="Photo shared by ${oe(p.poster_name||'student')}" loading="lazy" decoding="async"></button>`).join('')}</div>`}
-function orbitCommentRows(id){const rows=orbitState.comments.get(id)||[];if(!rows.length)return'<div class="text-[10px] text-slate-500">No comments yet. Start the conversation.</div>';const p=orbitState.posts.get(id);return rows.map(c=>{const prof=orbitState.profiles.get(c.user_id)||{};const name=prof.full_name||c.user_id===currentUserId?userFullName:'Student';return`<div class="orbit-comment" data-comment-id="${oe(c.id)}">${orbitAvatar(name,prof.profile_photo_url)}<div class="orbit-comment-body"><div><span class="orbit-comment-name">${oe(name||'Student')}</span><span class="orbit-comment-time">${oe(timeAgo(c.created_at))}</span></div><div class="orbit-comment-text">${orbitText(c.content||'')}</div></div><div class="flex gap-2">${p?`<button onclick="setOrbitReply('${oe(id)}','${oe(c.id)}')" class="text-[9px] text-slate-500">Reply</button>`:''}${c.user_id===currentUserId?`<button onclick="deleteComment('${oe(id)}','${oe(c.id)}')" class="text-slate-500" aria-label="Delete comment"><i class="fas fa-times"></i></button>`:''}</div></div>`}).join('')}
-function renderPost(p){const liked=!!p.likedByCurrentUser,saved=!!p.savedByCurrentUser,own=p.poster_id===currentUserId,prof=orbitState.profiles.get(p.poster_id)||{};return`<article id="post-${oe(p.id)}" class="glass-card orbit-post space-y-3"><header class="orbit-post-head"><button class="orbit-author" onclick="openOrbitAuthor('${oe(p.poster_id||'')}')">${orbitAvatar(p.poster_name,prof.profile_photo_url)}<span class="orbit-author-meta"><strong class="orbit-author-name">${oe(p.poster_name||'Student')}</strong><span class="orbit-author-info">${oe(p.school_tag||userUniversity)} • ${oe(timeAgo(p.created_at))}${p.edited_at?' • edited':''}</span></span></button><div class="orbit-menu-wrap"><button class="orbit-menu" onclick="toggleOrbitMenu('${oe(p.id)}')" aria-label="Post options"><i class="fas fa-ellipsis-h"></i></button><div id="orbitMenu-${oe(p.id)}" class="orbit-menu-panel hidden">${own?`<button onclick="editPost('${oe(p.id)}')"><i class="fas fa-pen"></i> Edit post</button><button class="danger" onclick="deletePost('${oe(p.id)}')"><i class="fas fa-trash"></i> Delete post</button>`:`<button onclick="shareOrbitPost('${oe(p.id)}')"><i class="fas fa-share"></i> Share</button><button onclick="reportOrbitPost('${oe(p.id)}')"><i class="far fa-flag"></i> Report</button>`}<button onclick="toggleSavePost('${oe(p.id)}')"><i class="${saved?'fas':'far'} fa-bookmark"></i> ${saved?'Unsave':'Save'}</button></div></div></header>${p.content?`<div class="orbit-content">${orbitText(p.content)}</div>`:''}${orbitMedia(p)}<div class="orbit-actions"><button id="like-${oe(p.id)}" class="orbit-action ${liked?'liked':''}" onclick="toggleLike('${oe(p.id)}')"><i class="${liked?'fas':'far'} fa-heart"></i><span>${Number(p.likeCount)||0}</span></button><button class="orbit-action" onclick="toggleComments('${oe(p.id)}')"><i class="far fa-comment"></i><span id="comment-count-${oe(p.id)}">${Number(p.commentCount)||0}</span></button><button class="orbit-action" onclick="shareOrbitPost('${oe(p.id)}')"><i class="fas fa-share"></i> Share</button><button id="save-${oe(p.id)}" class="orbit-action ${saved?'saved':''}" onclick="toggleSavePost('${oe(p.id)}')"><i class="${saved?'fas':'far'} fa-bookmark"></i></button></div><section id="commentSection-${oe(p.id)}" class="orbit-comments hidden"><div id="commentList-${oe(p.id)}" class="orbit-comment-list"></div><button id="commentMore-${oe(p.id)}" type="button" class="hidden text-[10px] text-green-500 font-bold" onclick="loadComments('${oe(p.id)}',true)">Load more comments</button><form class="orbit-comment-input" onsubmit="event.preventDefault();addComment('${oe(p.id)}')"><input id="commentInput-${oe(p.id)}" maxlength="1000" placeholder="Add a comment..." autocomplete="off"><button type="submit" aria-label="Send"><i class="fas fa-paper-plane"></i></button></form></section></article>`}
+function orbitCommentRows(id){const rows=orbitState.comments.get(id)||[];if(!rows.length)return'<div class="text-[10px] text-slate-500">No comments yet. Start the conversation.</div>';const p=orbitState.posts.get(id);return rows.map(c=>{const prof=orbitState.profiles.get(c.user_id)||{};const name=prof.full_name||c.user_id===currentUserId?userFullName:'Student';return`<div class="orbit-comment" data-comment-id="${oe(c.id)}">${orbitAvatar(name,prof.avatar_url)}<div class="orbit-comment-body"><div><span class="orbit-comment-name">${oe(name||'Student')}</span><span class="orbit-comment-time">${oe(timeAgo(c.created_at))}</span></div><div class="orbit-comment-text">${orbitText(c.content||'')}</div></div><div class="flex gap-2">${p?`<button onclick="setOrbitReply('${oe(id)}','${oe(c.id)}')" class="text-[9px] text-slate-500">Reply</button>`:''}${c.user_id===currentUserId?`<button onclick="deleteComment('${oe(id)}','${oe(c.id)}')" class="text-slate-500" aria-label="Delete comment"><i class="fas fa-times"></i></button>`:''}</div></div>`}).join('')}
+function renderPost(p){const liked=!!p.likedByCurrentUser,saved=!!p.savedByCurrentUser,own=p.poster_id===currentUserId,prof=orbitState.profiles.get(p.poster_id)||{};return`<article id="post-${oe(p.id)}" class="glass-card orbit-post space-y-3"><header class="orbit-post-head"><button class="orbit-author" onclick="openOrbitAuthor('${oe(p.poster_id||'')}')">${orbitAvatar(p.poster_name,prof.avatar_url)}<span class="orbit-author-meta"><strong class="orbit-author-name">${oe(p.poster_name||'Student')}</strong><span class="orbit-author-info">${oe(p.school_tag||userUniversity)} • ${oe(timeAgo(p.created_at))}${p.edited_at?' • edited':''}</span></span></button><div class="orbit-menu-wrap"><button class="orbit-menu" onclick="toggleOrbitMenu('${oe(p.id)}')" aria-label="Post options"><i class="fas fa-ellipsis-h"></i></button><div id="orbitMenu-${oe(p.id)}" class="orbit-menu-panel hidden">${own?`<button onclick="editPost('${oe(p.id)}')"><i class="fas fa-pen"></i> Edit post</button><button class="danger" onclick="deletePost('${oe(p.id)}')"><i class="fas fa-trash"></i> Delete post</button>`:`<button onclick="shareOrbitPost('${oe(p.id)}')"><i class="fas fa-share"></i> Share</button><button onclick="reportOrbitPost('${oe(p.id)}')"><i class="far fa-flag"></i> Report</button>`}<button onclick="toggleSavePost('${oe(p.id)}')"><i class="${saved?'fas':'far'} fa-bookmark"></i> ${saved?'Unsave':'Save'}</button></div></div></header>${p.content?`<div class="orbit-content">${orbitText(p.content)}</div>`:''}${orbitMedia(p)}<div class="orbit-actions"><button id="like-${oe(p.id)}" class="orbit-action ${liked?'liked':''}" onclick="toggleLike('${oe(p.id)}')"><i class="${liked?'fas':'far'} fa-heart"></i><span>${Number(p.likeCount)||0}</span></button><button type="button" class="orbit-action like-count" onclick="openOrbitLikes('${oe(p.id)}')" aria-label="See who liked this post"><i class="fas fa-users"></i><span>See likes</span></button><button class="orbit-action" onclick="toggleComments('${oe(p.id)}')"><i class="far fa-comment"></i><span id="comment-count-${oe(p.id)}">${Number(p.commentCount)||0}</span></button><button class="orbit-action" onclick="shareOrbitPost('${oe(p.id)}')"><i class="fas fa-share"></i> Share</button><button id="save-${oe(p.id)}" class="orbit-action ${saved?'saved':''}" onclick="toggleSavePost('${oe(p.id)}')"><i class="${saved?'fas':'far'} fa-bookmark"></i></button></div><section id="commentSection-${oe(p.id)}" class="orbit-comments hidden"><div id="commentList-${oe(p.id)}" class="orbit-comment-list"></div><button id="commentMore-${oe(p.id)}" type="button" class="hidden text-[10px] text-green-500 font-bold" onclick="loadComments('${oe(p.id)}',true)">Load more comments</button><form class="orbit-comment-input" onsubmit="event.preventDefault();addComment('${oe(p.id)}')"><input id="commentInput-${oe(p.id)}" maxlength="1000" placeholder="Add a comment..." autocomplete="off"><button type="submit" aria-label="Send"><i class="fas fa-paper-plane"></i></button></form></section></article>`}
 function orbitRender(){const f=document.getElementById('orbitFeed'),a=orbitList();document.getElementById('orbitSearchState')?.classList.toggle('hidden',!orbitState.search);if(document.getElementById('orbitSearchState')&&!document.getElementById('orbitSearchState').classList.contains('hidden'))document.getElementById('orbitSearchState').textContent=`${a.length} result${a.length===1?'':'s'} for “${oe(orbitState.search)}”`;if(!a.length){f.innerHTML=`<div class="orbit-empty"><div><i class="fas ${orbitState.search?'fa-search':'fa-satellite'}"></i></div><h4>${orbitState.search?'No results found':'Your Orbit is quiet.'}</h4><p>${orbitState.search?'Try another keyword or hashtag.':'Be the first to start the conversation.'}</p></div>`;return}f.innerHTML=a.map(renderPost).join('')+(orbitFeedLoadedAll||orbitState.search?'':`<button onclick="loadFeed()" class="w-full py-3 text-center text-xs text-green-500 font-bold">Load more</button>`)}
-async function orbitProfiles(posts){const ids=[...new Set(posts.map(p=>p.poster_id).filter(Boolean))].filter(id=>!orbitState.profiles.has(id));if(!ids.length)return;try{const{data,error}=await _supabase.from('profiles').select('id,full_name,profile_photo_url').in('id',ids);if(error)throw error;(data||[]).forEach(x=>orbitState.profiles.set(x.id,x))}catch(e){console.warn('Orbit profile hydration failed',e)}}
+async function orbitProfiles(posts){const ids=[...new Set(posts.map(p=>p.poster_id).filter(Boolean))].filter(id=>!orbitState.profiles.has(id));if(!ids.length)return;try{const{data,error}=await _supabase.from('profiles').select('id,full_name,avatar_url').in('id',ids);if(error)throw error;(data||[]).forEach(x=>orbitState.profiles.set(x.id,x))}catch(e){console.warn('Orbit profile hydration failed',e)}}
 async function hydrateOrbitSocial(posts){const ids=posts.map(p=>p.id).filter(Boolean);if(!ids.length)return;const [likes,comments,saves]=await Promise.all([_supabase.from('orbit_post_likes').select('post_id,user_id').in('post_id',ids),_supabase.from('orbit_comments').select('post_id').in('post_id',ids).is('deleted_at',null),_supabase.from('orbit_post_saves').select('post_id').in('post_id',ids).eq('user_id',currentUserId)]);if(likes.error)throw likes.error;if(comments.error)throw comments.error;if(saves.error)throw saves.error;const likeCounts=new Map(),liked=new Set(),commentCounts=new Map(),saved=new Set();(likes.data||[]).forEach(x=>{likeCounts.set(x.post_id,(likeCounts.get(x.post_id)||0)+1);if(x.user_id===currentUserId)liked.add(x.post_id)});(comments.data||[]).forEach(x=>commentCounts.set(x.post_id,(commentCounts.get(x.post_id)||0)+1));(saves.data||[]).forEach(x=>saved.add(x.post_id));posts.forEach(p=>{p.likeCount=likeCounts.get(p.id)||0;p.likedByCurrentUser=liked.has(p.id);p.commentCount=commentCounts.get(p.id)||0;p.savedByCurrentUser=saved.has(p.id);if(p.savedByCurrentUser)orbitState.saved.add(p.id);else orbitState.saved.delete(p.id)})}
 async function loadFeed(reset=false){if(isFeedLoading)return;if(!currentUserId)return;if(!userUniversity){const f=document.getElementById('orbitFeed');if(f)f.innerHTML='<div class="orbit-empty"><div><i class="fas fa-building"></i></div><h4>Campus unavailable</h4><p>Your university could not be resolved for this session.</p></div>';return;}isFeedLoading=true;const f=document.getElementById('orbitFeed');try{if(reset){orbitFeedCursor=null;orbitFeedLoadedAll=false;orbitState.posts.clear();orbitState.comments.clear();orbitState.commentCursors.clear();f.innerHTML='<div class="orbit-skeleton"></div><div class="orbit-skeleton"></div>'}if(orbitFeedLoadedAll&&!reset)return;let q=_supabase.from('orbit_feed').select(ORBIT_POST_COLUMNS).eq('school_tag',userUniversity).eq('status','active').eq('visibility','campus').order('created_at',{ascending:false}).order('id',{ascending:false}).limit(FEED_PAGE_SIZE);if(orbitFeedCursor){q=q.or(`created_at.lt.${orbitFeedCursor.created_at},and(created_at.eq.${orbitFeedCursor.created_at},id.lt.${orbitFeedCursor.id})`)}const{data,error}=await q;if(error)throw error;if(!data?.length){orbitFeedLoadedAll=true;orbitRender();return}await orbitProfiles(data);await hydrateOrbitSocial(data);data.forEach(p=>orbitState.posts.set(p.id,p));const last=data[data.length-1];orbitFeedCursor={created_at:last.created_at,id:last.id};if(data.length<FEED_PAGE_SIZE)orbitFeedLoadedAll=true;orbitRender()}catch(e){console.error('Orbit feed load failed',e);if(!orbitState.posts.size)f.innerHTML='<div class="orbit-empty"><div><i class="fas fa-wifi"></i></div><h4>Could not load your Orbit</h4><p>Check your connection and try again.</p><button onclick="loadFeed(true)" class="orbit-submit" style="max-width:180px;margin:1rem auto">Retry</button></div>'}finally{isFeedLoading=false}}
 function updateLikeUI(p){const b=document.getElementById('like-'+p.id);if(!b)return;b.classList.toggle('liked',!!p.likedByCurrentUser);const i=b.querySelector('i');if(i)i.className=`${p.likedByCurrentUser?'fas':'far'} fa-heart`;const s=b.querySelector('span');if(s)s.textContent=String(Number(p.likeCount)||0)}
@@ -2895,53 +3031,99 @@ async function editPost(id){const p=orbitState.posts.get(id);if(!p||p.poster_id!
 async function deletePost(id){const p=orbitState.posts.get(id);if(!p||p.poster_id!==currentUserId||!confirm('Delete this post? This cannot be undone.'))return;const backup=p;orbitState.posts.delete(id);orbitRender();try{const{error}=await _supabase.from('orbit_feed').delete().eq('id',id).eq('poster_id',currentUserId);if(error)throw error}catch(e){orbitState.posts.set(id,backup);orbitRender();alert('Unable to delete this post.')}}
 async function reportOrbitPost(id){const reasons=['Spam','Harassment','Inappropriate content','Misinformation','Other'];const reason=prompt(`Report reason:\n${reasons.join(', ')}`);if(!reason||!reasons.includes(reason))return;try{const{error}=await _supabase.rpc('orbit_create_report',{p_content_type:'post',p_content_id:id,p_reason:reason});if(error)throw error;alert('Report submitted. Thank you for helping keep Orbit safe.')}catch(e){console.error('Orbit report failed',e);alert('Unable to submit report right now.')}}
 function shareOrbitPost(id){const p=orbitState.posts.get(id),u=new URL(location.href);u.hash='orbit-post-'+id;try{if(navigator.share)navigator.share({title:`${p?.poster_name||'Student'} on UniVERSE Orbit`,text:p?.content||'Campus post',url:u.href});else navigator.clipboard.writeText(u.href).then(()=>alert('Post link copied.')).catch(()=>alert(u.href))}catch(e){console.error(e)}}
+async function reportOrbitProfile(id,name){
+    const reasons=['Spam','Harassment','Inappropriate content','Fake account','Inappropriate profile','Other'];
+    const reason=prompt(`Report ${name||'this profile'} for:\n${reasons.join(', ')}`);
+    if(!reason||!reasons.includes(reason))return;
+    const note=prompt('Optional additional details:')||'';
+    try{
+        const {error}=await _supabase.from('reports').insert({reporter_id:currentUserId,content_type:'profile',content_id:id,reason:note.trim()?`${reason} — ${note.trim()}`:reason,status:'pending'});
+        if(error)throw error;
+        alert('Profile report submitted. Thank you.');
+    }catch(e){console.error('Orbit profile report failed',e);alert('Unable to submit the profile report right now.');}
+}
+async function sendOrbitProfileMessageRequest(profile){
+    if(!profile?.id||profile.id===currentUserId)return;
+    const message=prompt(`Send a message request to ${profile.full_name||'this student'}:`);
+    if(message===null)return;
+    if(!message.trim()){alert('Write a short message first.');return;}
+    try{
+        if(typeof chat?.sendRequest!=='function')throw new Error('Messaging is unavailable.');
+        await chat.sendRequest(profile.id,message.trim());
+        try{await chat.refreshRequests();}catch(_){}
+        alert('Message request sent.');
+    }catch(e){console.error('Orbit message request failed',e);alert(e?.code==='42501'?'You cannot message this student.':'We could not send the message request right now.');}
+}
+function clearOrbitPublicProfilePosts(){
+    orbitState.profilePostIds.forEach(id=>{
+        const p=orbitState.posts.get(id);
+        if(p)orbitState.posts.delete(id);
+        orbitState.comments.delete(id);
+    });
+    orbitState.profilePostIds.clear();
+    orbitState.activePublicProfileId=null;
+}
 async function openOrbitAuthor(id){
     if(!id)return;
     if(id===currentUserId&&typeof openProfilePage==='function'){openProfilePage();return;}
-    orbitClosePublicProfile();
-    const modal=document.createElement('div');
-    modal.id='orbitPublicProfileModal';
-    modal.className='fixed inset-0 bg-black/75 backdrop-blur-sm hidden z-[118] flex items-end sm:items-center justify-center p-0 sm:p-4';
-    modal.innerHTML=`<div class="orbit-modal w-full max-w-md max-h-[88dvh] overflow-y-auto rounded-t-[2rem] sm:rounded-[2rem] p-5 sm:p-6">
-        <div class="flex items-center justify-between gap-3">
-            <div><p class="orbit-kicker">ORBIT PROFILE</p><h3 class="text-lg font-bold">Student profile</h3></div>
-            <button type="button" class="orbit-close" aria-label="Close profile"><i class="fas fa-times"></i></button>
-        </div>
-        <div data-orbit-profile-body class="py-6"><div class="orbit-skeleton"></div></div>
-    </div>`;
-    document.body.appendChild(modal);
-    modal.classList.remove('hidden');
-    modal.querySelector('.orbit-close')?.addEventListener('click',orbitClosePublicProfile);
-    modal.addEventListener('click',e=>{if(e.target===modal)orbitClosePublicProfile()});
+    const page=document.getElementById('orbitPublicProfilePage'),body=document.getElementById('orbitPublicProfileBody');
+    if(!page||!body)return;
+    clearOrbitPublicProfilePosts();
+    orbitState.activePublicProfileId=id;
+    body.innerHTML='<div class="orbit-skeleton" style="height:260px"></div><div class="orbit-skeleton" style="height:180px"></div>';
+    page.classList.remove('hidden');
     try{
-        const {data:profile,error}=await _supabase.from('profiles')
-            .select('id,full_name,university,bio,profile_photo_url,reputation_stars')
-            .eq('id',id).maybeSingle();
+        const {data:profile,error}=await _supabase.from('profiles').select('id,full_name,avatar_url,university,reputation_stars,bio,department,level,interests,badges,is_verified,onboarding_completed').eq('id',id).maybeSingle();
         if(error)throw error;
-        if(!profile){modal.querySelector('[data-orbit-profile-body]').innerHTML='<div class="orbit-empty"><div><i class="fas fa-user"></i></div><h4>Profile unavailable</h4><p>This student profile could not be loaded.</p></div>';return;}
-        const posts=[...orbitState.posts.values()].filter(p=>p.poster_id===id).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).slice(0,5);
-        const body=modal.querySelector('[data-orbit-profile-body]');
-        body.innerHTML='';
-        const head=document.createElement('div');
-        head.className='flex items-start gap-3';
-        head.innerHTML=orbitAvatar(profile.full_name,profile.profile_photo_url);
-        const info=document.createElement('div');info.className='min-w-0 flex-1';
-        const name=document.createElement('h4');name.className='text-base font-bold';name.textContent=profile.full_name||'Student';
-        const uni=document.createElement('p');uni.className='text-[10px] text-slate-500 mt-1';uni.textContent=profile.university||'University not provided';
-        const bio=document.createElement('p');bio.className='text-xs text-slate-300 mt-3 break-words';bio.textContent=profile.bio||'No bio added yet.';
-        info.append(name,uni,bio);head.appendChild(info);body.appendChild(head);
-        const rep=document.createElement('div');rep.className='mt-4 text-[10px] text-slate-500';rep.textContent=`Reputation: ${Number(profile.reputation_stars)||0} stars`;body.appendChild(rep);
-        const title=document.createElement('h5');title.className='mt-5 mb-2 text-xs font-bold uppercase tracking-wider text-slate-500';title.textContent='Recent Orbit posts';body.appendChild(title);
-        if(posts.length){
-            posts.forEach(p=>{const item=document.createElement('div');item.className='border border-white/5 rounded-xl p-3 mb-2';const t=document.createElement('p');t.className='text-xs text-slate-300 whitespace-pre-wrap break-words';t.textContent=p.content||'Shared media';const meta=document.createElement('p');meta.className='text-[9px] text-slate-500 mt-2';meta.textContent=timeAgo(p.created_at);item.append(t,meta);body.appendChild(item);});
-        }else{
-            const empty=document.createElement('p');empty.className='text-xs text-slate-500';empty.textContent='No posts from this student are currently loaded in your Orbit feed.';body.appendChild(empty);
-        }
+        if(!profile){body.innerHTML='<div class="orbit-empty"><div><i class="fas fa-user"></i></div><h4>Profile unavailable</h4><p>This student profile could not be loaded.</p></div>';return;}
+        const {data:posts,error:postError}=await _supabase.from('orbit_feed').select(ORBIT_POST_COLUMNS).eq('poster_id',id).eq('school_tag',userUniversity).eq('status','active').eq('visibility','campus').order('created_at',{ascending:false});
+        if(postError)throw postError;
+        const {data:tags,error:tagError}=await _supabase.from('orbit_post_mentions').select('post_id,created_at').eq('mentioned_user_id',id).order('created_at',{ascending:false}).limit(200);
+        if(tagError)throw tagError;
+        const tagIds=[...new Set((tags||[]).map(x=>x.post_id).filter(Boolean))];
+        let taggedPosts=[];
+        if(tagIds.length){const r=await _supabase.from('orbit_feed').select(ORBIT_POST_COLUMNS).in('id',tagIds).eq('school_tag',userUniversity).eq('status','active').eq('visibility','campus').order('created_at',{ascending:false});if(r.error)throw r.error;taggedPosts=r.data||[];}
+        const allProfilePosts=[];
+        [...(posts||[]),...taggedPosts].forEach(p=>{if(!orbitState.posts.has(p.id))orbitState.posts.set(p.id,p);orbitState.profilePostIds.add(p.id);allProfilePosts.push(p);});
+        const unique=[...new Map(allProfilePosts.map(p=>[p.id,p])).values()];
+        await orbitProfiles(unique);
+        await hydrateOrbitSocial(unique);
+        const interests=Array.isArray(profile.interests)?profile.interests.filter(Boolean):[];
+        const badges=Array.isArray(profile.badges)?profile.badges.filter(Boolean):[];
+        const avatar=orbitAvatar(profile.full_name,profile.avatar_url);
+        const taggedSet=new Set(tagIds);
+        body.innerHTML=`
+          <section class="glass-card rounded-[2rem] overflow-hidden">
+            <div class="profile-cover"></div>
+            <div class="p-5 sm:p-7 -mt-10 relative">
+              <div class="flex flex-col sm:flex-row sm:items-end gap-4">
+                ${avatar}
+                <div class="min-w-0 flex-1"><h4 class="text-xl font-bold break-words">${oe(profile.full_name||'Student')}</h4><p class="text-xs text-slate-500 mt-1">${oe(profile.university||'University not provided')}</p></div>
+                ${profile.is_verified?'<span class="profile-verified-badge"><i class="fas fa-check"></i> Verified</span>':''}
+              </div>
+              <div class="orbit-profile-actions">
+                <button type="button" class="orbit-profile-action primary" onclick="sendOrbitProfileMessageRequest(${JSON.stringify({id:profile.id,full_name:profile.full_name||'Student'}).replace(/"/g,'&quot;')})"><i class="fas fa-paper-plane"></i> Send message request</button>
+                <button type="button" class="orbit-profile-action" onclick="reportOrbitProfile('${oe(profile.id)}','${oe(profile.full_name||'this profile')}')"><i class="far fa-flag"></i> Report profile</button>
+              </div>
+              <p class="text-sm text-slate-300 mt-5 break-words">${oe(profile.bio||'No bio added yet.')}</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                ${profile.department?`<span class="profile-meta-chip"><i class="fas fa-book"></i>${oe(profile.department)}</span>`:''}
+                ${profile.level?`<span class="profile-meta-chip"><i class="fas fa-layer-group"></i>${oe(profile.level)}</span>`:''}
+                <span class="profile-meta-chip"><i class="fas fa-star"></i>${Number(profile.reputation_stars)||0} stars</span>
+                ${profile.onboarding_completed?'<span class="profile-meta-chip"><i class="fas fa-circle-check"></i> Profile complete</span>':''}
+              </div>
+              ${interests.length?`<div class="mt-5"><p class="profile-detail-label">Interests</p><div class="flex flex-wrap gap-2">${interests.map(x=>`<span class="profile-interest-chip">${oe(x)}</span>`).join('')}</div></div>`:''}
+              ${badges.length?`<div class="mt-5"><p class="profile-detail-label">Badges</p><div class="flex flex-wrap gap-2">${badges.map(x=>`<span class="profile-badge-chip"><i class="fas fa-award"></i>${oe(x)}</span>`).join('')}</div></div>`:''}
+            </div>
+          </section>
+          <section class="orbit-profile-section"><div class="mb-3"><p class="orbit-kicker">THE ORBIT</p><h4 class="text-base font-bold">All posts</h4><p class="text-[10px] text-slate-500 mt-1">${(posts||[]).length} post${(posts||[]).length===1?'':'s'}</p></div><div class="space-y-3">${(posts||[]).length?posts.map(p=>renderPost(p)).join(''):'<div class="orbit-empty"><div><i class="fas fa-satellite"></i></div><h4>No posts yet</h4><p>This student has not shared anything on The Orbit.</p></div>'}</div></section>
+          <section class="orbit-profile-section"><div class="mb-3"><p class="orbit-kicker">TAGGED</p><h4 class="text-base font-bold">Where ${oe((profile.full_name||'this student').split(' ')[0])} is tagged</h4><p class="text-[10px] text-slate-500 mt-1">Posts where this student was mentioned.</p></div><div class="space-y-3">${taggedPosts.length?taggedPosts.map(p=>`<div class="orbit-tagged-label"><i class="fas fa-at"></i> Mentioned in this post</div>${renderPost(p)}`).join(''):'<div class="orbit-empty"><div><i class="fas fa-at"></i></div><h4>No tags yet</h4><p>This student has not been mentioned in an Orbit post.</p></div>'}</div></section>`;
     }catch(e){
         console.error('Orbit public profile load failed',e);
-        modal.querySelector('[data-orbit-profile-body]').innerHTML='<div class="orbit-empty"><div><i class="fas fa-wifi"></i></div><h4>Could not load profile</h4><p>Check your connection and try again.</p></div>';
+        body.innerHTML='<div class="orbit-empty"><div><i class="fas fa-wifi"></i></div><h4>Could not load profile</h4><p>Check your connection and try again.</p></div>';
     }
 }
+function closeOrbitPublicProfilePage(){clearOrbitPublicProfilePosts();document.getElementById('orbitPublicProfilePage')?.classList.add('hidden');}
 function openOrbitMediaViewer(id,i){const p=orbitState.posts.get(id),a=(p?.images||[]).map(ou).filter(Boolean);if(!a.length)return;orbitState.media=a;orbitState.mediaIndex=i;document.getElementById('orbitMediaViewer').classList.remove('hidden');document.getElementById('orbitMediaViewer').classList.add('flex');updateOrbitMediaViewer()}
 function updateOrbitMediaViewer(){const a=orbitState.media;document.getElementById('orbitViewerImage').src=a[orbitState.mediaIndex]||'';document.getElementById('orbitMediaPrev').classList.toggle('hidden',a.length<2);document.getElementById('orbitMediaNext').classList.toggle('hidden',a.length<2)}
 function stepOrbitMedia(d){orbitState.mediaIndex=(orbitState.mediaIndex+d+orbitState.media.length)%orbitState.media.length;updateOrbitMediaViewer()}
@@ -2952,13 +3134,60 @@ function orbitRealtimeKey(payload){const row=payload.new||payload.old||{};const 
 function orbitMarkRealtime(payload){const key=orbitRealtimeKey(payload);if(orbitState.realtimeSeen.has(key))return false;orbitState.realtimeSeen.add(key);if(orbitState.realtimeSeen.size>5000){const first=orbitState.realtimeSeen.values().next().value;orbitState.realtimeSeen.delete(first)}return true}
 function handleOrbitRealtime(payload){if(!orbitMarkRealtime(payload))return;const p=payload.new||payload.old;if(payload.table==='orbit_feed'){if(p?.school_tag&&p.school_tag!==userUniversity)return;if(payload.eventType==='INSERT'){if(orbitState.posts.has(p.id)||orbitState.newPosts.some(x=>x.id===p.id))return;if(window.scrollY<220){orbitProfiles([p]).then(()=>hydrateOrbitSocial([p])).then(()=>{if(!orbitState.posts.has(p.id))orbitState.posts.set(p.id,p);orbitRender()})}else{orbitState.newPosts.push(p);const b=document.getElementById('orbitNewPostsBanner');b.classList.remove('hidden');document.getElementById('orbitNewPostsCount').textContent=`${orbitState.newPosts.length} new post${orbitState.newPosts.length===1?'':'s'}`}}else if(payload.eventType==='UPDATE'){const existing=orbitState.posts.get(p.id);if(existing)orbitState.posts.set(p.id,{...existing,...p});else if(p.status==='active'&&p.visibility==='campus')orbitState.posts.set(p.id,p);orbitProfiles([p]).then(()=>orbitRender())}else if(payload.eventType==='DELETE'){orbitState.posts.delete(p.id);orbitState.newPosts=orbitState.newPosts.filter(x=>x.id!==p.id);document.getElementById('post-'+p.id)?.remove()}}else if(payload.table==='orbit_post_likes'){const post=orbitState.posts.get(p?.post_id);if(!post)return;const isOwn=p.user_id===currentUserId;if(isOwn&&orbitState.pendingLikes.has(p.post_id))return;if(payload.eventType==='INSERT'){if(isOwn){if(post.likedByCurrentUser)return;post.likedByCurrentUser=true}post.likeCount=(Number(post.likeCount)||0)+1}else if(payload.eventType==='DELETE'){if(isOwn&&!post.likedByCurrentUser)return;if(isOwn)post.likedByCurrentUser=false;post.likeCount=Math.max(0,(Number(post.likeCount)||0)-1)}patchOrbitPostSocial(post.id)}else if(payload.table==='orbit_comments'){const post=orbitState.posts.get(p?.post_id);if(!post)return;if(payload.eventType==='INSERT'){const loaded=orbitState.comments.get(post.id)||[],alreadyLoaded=loaded.some(x=>x.id===p.id);if(isOwnCommentEvent(p)&&orbitState.pendingComments.has(p.id)){orbitState.pendingComments.delete(p.id);if(!alreadyLoaded)orbitState.comments.set(post.id,[...loaded,p]);return}if(!alreadyLoaded)post.commentCount=(Number(post.commentCount)||0)+1;if(!alreadyLoaded&&orbitState.comments.has(post.id))orbitState.comments.set(post.id,[...loaded,p])}else if(payload.eventType==='DELETE'){if(orbitState.pendingDeletes.has(p.id)){orbitState.pendingDeletes.delete(p.id);return}post.commentCount=Math.max(0,(Number(post.commentCount)||0)-1);if(orbitState.comments.has(post.id))orbitState.comments.set(post.id,(orbitState.comments.get(post.id)||[]).filter(x=>x.id!==p.id))}const c=document.getElementById('comment-count-'+post.id);if(c)c.textContent=String(post.commentCount);if(!document.getElementById('commentSection-'+post.id)?.classList.contains('hidden')){const l=document.getElementById('commentList-'+post.id);if(l)l.innerHTML=orbitCommentRows(post.id)}}else if(payload.table==='orbit_post_saves'){if(p?.user_id!==currentUserId)return;const post=orbitState.posts.get(p.post_id);if(!post)return;if(orbitState.pendingSaves.has(p.post_id))return;post.savedByCurrentUser=payload.eventType==='INSERT';if(post.savedByCurrentUser)orbitState.saved.add(post.id);else orbitState.saved.delete(post.id);patchOrbitPostSocial(post.id)}}
 function isOwnCommentEvent(row){return row?.user_id===currentUserId}
-async function setupOrbitRealtime(){if(!currentUserId||orbitRealtimeChannel||orbitRealtimeStarting)return;orbitRealtimeStarting=true;try{orbitRealtimeChannel=_supabase.channel(`orbit-live-${currentUserId}`).on('postgres_changes',{event:'*',schema:'public',table:'orbit_feed'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_likes'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_comments'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_saves',filter:`user_id=eq.${currentUserId}`},handleOrbitRealtime);await orbitRealtimeChannel.subscribe()}catch(e){console.error('Orbit realtime setup failed',e);if(orbitRealtimeChannel){try{await _supabase.removeChannel(orbitRealtimeChannel)}catch(_){ }orbitRealtimeChannel=null}}finally{orbitRealtimeStarting=false}}
+async function setupOrbitRealtime(){if(!currentUserId||orbitRealtimeChannel||orbitRealtimeStarting)return;orbitRealtimeStarting=true;try{orbitRealtimeChannel=_supabase.channel(`orbit-live-${currentUserId}`).on('postgres_changes',{event:'*',schema:'public',table:'orbit_feed'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_likes'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_comments'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_saves',filter:`user_id=eq.${currentUserId}`},handleOrbitRealtime).on('postgres_changes',{event:'INSERT',schema:'public',table:'notifications',filter:`user_id=eq.${currentUserId}`},()=>{updateOrbitNotificationBadge();if(!document.getElementById('orbitNotificationModal')?.classList.contains('hidden'))loadOrbitNotifications()});await orbitRealtimeChannel.subscribe()}catch(e){console.error('Orbit realtime setup failed',e);if(orbitRealtimeChannel){try{await _supabase.removeChannel(orbitRealtimeChannel)}catch(_){ }orbitRealtimeChannel=null}}finally{orbitRealtimeStarting=false}}
 function orbitCleanupRealtime(){if(orbitRealtimeChannel){_supabase.removeChannel(orbitRealtimeChannel);orbitRealtimeChannel=null}}
-function openPostModal(){document.getElementById('postModal').classList.remove('hidden');document.getElementById('postComposerName').textContent=userFullName||'Scholar';document.getElementById('postComposerAvatar').textContent=oi(userFullName);document.getElementById('postContent').focus()}
-function closePostModal(){document.getElementById('postModal').classList.add('hidden');document.getElementById('imagePreviewContainer').innerHTML='';selectedFiles=[];document.getElementById('postContent').value='';document.getElementById('postImage').value='';document.getElementById('postSubmitStatus').classList.add('hidden');document.getElementById('postCharCount').textContent='0 / 5000'}
+let orbitComposerMentions=[];
+let orbitMentionTimer=null;
+async function loadOrbitMentionSuggestions(query=''){
+    const list=document.getElementById('orbitMentionList');
+    if(!list||!currentUserId)return;
+    const clean=query.trim().toLowerCase();
+    try{
+        const {data:people,error}=await _supabase.from('profiles').select('id,full_name,avatar_url,university,department,level').eq('university',userUniversity).neq('id',currentUserId).limit(250);
+        if(error)throw error;
+        const rows=people||[];
+        const campusPostIds=(await _supabase.from('orbit_feed').select('id,poster_id').eq('school_tag',userUniversity).eq('status','active').limit(1000)).data||[];
+        const ids=campusPostIds.map(x=>x.id).filter(Boolean);
+        const engagement=new Map(rows.map(x=>[x.id,0]));
+        if(ids.length){
+            const [likes,comments]=await Promise.all([_supabase.from('orbit_post_likes').select('post_id').eq('user_id',currentUserId).in('post_id',ids),_supabase.from('orbit_comments').select('post_id').eq('user_id',currentUserId).is('deleted_at',null).in('post_id',ids)]);
+            const postOwners=new Map(campusPostIds.map(x=>[x.id,x.poster_id]));
+            (likes.data||[]).forEach(x=>{const owner=postOwners.get(x.post_id);if(owner)engagement.set(owner,(engagement.get(owner)||0)+1)});
+            (comments.data||[]).forEach(x=>{const owner=postOwners.get(x.post_id);if(owner)engagement.set(owner,(engagement.get(owner)||0)+2)});
+        }
+        const filtered=rows.filter(x=>!clean||String(x.full_name||'').toLowerCase().includes(clean)).sort((a,b)=>(engagement.get(b.id)||0)-(engagement.get(a.id)||0)||String(a.full_name||'').localeCompare(String(b.full_name||''))).slice(0,8);
+        if(!filtered.length){list.innerHTML='<div class="p-3 text-[10px] text-slate-500">No students found on your campus.</div>';list.classList.remove('hidden');return;}
+        list.innerHTML=filtered.map(x=>`<button type="button" class="orbit-mention-item" onclick="insertOrbitMention('${oe(x.id)}')">${orbitAvatar(x.full_name,x.avatar_url)}<span class="min-w-0 flex-1"><strong class="block text-xs truncate">${oe(x.full_name||'Student')}</strong><span class="block text-[9px] text-slate-500 truncate">${oe(x.department||x.level||x.university||'Campus student')}${(engagement.get(x.id)||0)?` · ${engagement.get(x.id)} engagement${engagement.get(x.id)===1?'':'s'}`:''}</span></span><i class="fas fa-at text-slate-600"></i></button>`).join('');
+        list.classList.remove('hidden');
+    }catch(e){console.warn('Orbit mention suggestions failed',e);list.classList.add('hidden');}
+}
+function insertOrbitMention(id){
+    const list=document.getElementById('orbitMentionList'),input=document.getElementById('postContent');
+    if(!input)return;
+    _supabase.from('profiles').select('id,full_name,avatar_url,university,department,level').eq('id',id).maybeSingle().then(({data})=>{
+        if(!data)return;
+        const name=data.full_name||'Student';
+        const token='@'+name.replace(/\s+/g,' ');
+        const before=input.value;
+        const match=before.match(/(^|\s)@[\w- ]*$/);
+        input.value=match?before.slice(0,match.index+(match[1]?1:0))+token+' ':before+(before?' ':'')+token+' ';
+        if(!orbitComposerMentions.some(x=>x.id===id))orbitComposerMentions.push({id,name});
+        input.dispatchEvent(new Event('input',{bubbles:true}));
+        list?.classList.add('hidden');input.focus();
+    });
+}
+function orbitComposerMentionQuery(value){
+    const match=String(value||'').match(/(?:^|\s)@([^@\n]*)$/);
+    return match?match[1].trim():null;
+}
+function openPostModal(){orbitComposerMentions=[];document.getElementById('postModal').classList.remove('hidden');document.getElementById('postComposerName').textContent=userFullName||'Scholar';document.getElementById('postComposerAvatar').textContent=oi(userFullName);document.getElementById('postContent').focus();loadOrbitMentionSuggestions('');}
+function closePostModal(){orbitComposerMentions=[];document.getElementById('orbitMentionList')?.classList.add('hidden');document.getElementById('postModal').classList.add('hidden');document.getElementById('imagePreviewContainer').innerHTML='';selectedFiles=[];document.getElementById('postContent').value='';document.getElementById('postImage').value='';document.getElementById('postSubmitStatus').classList.add('hidden');document.getElementById('postCharCount').textContent='0 / 5000'}
 function previewFiles(){const i=document.getElementById('postImage');selectedFiles=[...selectedFiles,...Array.from(i.files||[])].slice(0,10);i.value='';const c=document.getElementById('imagePreviewContainer');c.innerHTML='';selectedFiles.forEach((f,n)=>{const r=new FileReader();r.onload=e=>{const d=document.createElement('div');d.className='relative aspect-square rounded-xl overflow-hidden';const img=document.createElement('img');img.src=e.target.result;img.alt='Selected Orbit image';img.className='w-full h-full object-cover';const b=document.createElement('button');b.type='button';b.className='absolute top-1 right-1 w-6 h-6 rounded-full bg-black/70 text-white';b.textContent='×';b.onclick=()=>{selectedFiles.splice(n,1);previewFiles()};d.append(img,b);c.appendChild(d)};r.readAsDataURL(f)})}
-async function submitPost(){const content=document.getElementById('postContent').value.trim(),b=document.getElementById('submitBtn'),st=document.getElementById('postSubmitStatus');if((!content&&!selectedFiles.length)||b.disabled)return;b.disabled=true;st.classList.remove('hidden');const uploaded=[];const urls=[];try{for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i];if(!f.type.startsWith('image/')||f.size>10*1024*1024)throw Error('Images must be valid files smaller than 10MB.');st.textContent=`Uploading image ${i+1} of ${selectedFiles.length}…`;const path=`${currentUserId}/${crypto.randomUUID()}_${f.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;const u=await _supabase.storage.from('orbit-images').upload(path,f);if(u.error)throw u.error;uploaded.push(path);urls.push(_supabase.storage.from('orbit-images').getPublicUrl(path).data.publicUrl)}st.textContent='Publishing to your campus…';const r=await _supabase.from('orbit_feed').insert([{content,images:urls,school_tag:userUniversity,poster_name:userFullName,poster_id:currentUserId}]).select(ORBIT_POST_COLUMNS).single();if(r.error)throw r.error;const p={...r.data,likeCount:0,likedByCurrentUser:false,commentCount:0,savedByCurrentUser:false};orbitState.posts.set(p.id,p);orbitFeedLoadedAll=false;await orbitProfiles([p]);closePostModal();orbitRender();if(window.scrollY<220)scrollTo({top:0,behavior:'smooth'})}catch(e){console.error('Orbit post failed',e);st.textContent=e.message||'Unable to publish. Please try again.';if(uploaded.length){try{await _supabase.storage.from('orbit-images').remove(uploaded)}catch(cleanupError){console.warn('Orbit orphan cleanup failed',cleanupError)}}}finally{b.disabled=false}}
-(function(){const i=document.getElementById('orbitSearchInput');if(i)i.addEventListener('input',()=>{clearTimeout(orbitState.timer);orbitState.timer=setTimeout(()=>{orbitState.search=i.value.trim();document.getElementById('orbitSearchClear').classList.toggle('hidden',!orbitState.search);orbitRender()},280)});const c=document.getElementById('postContent');if(c)c.addEventListener('input',()=>document.getElementById('postCharCount').textContent=`${c.value.length} / 5000`);document.addEventListener('click',e=>{if(!e.target.closest('.orbit-menu-wrap'))document.querySelectorAll('.orbit-menu-panel').forEach(x=>x.classList.add('hidden'))});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOrbitMediaViewer();closeOrbitNotifications();orbitClosePublicProfile()}})})();
+async function submitPost(){const content=document.getElementById('postContent').value.trim(),b=document.getElementById('submitBtn'),st=document.getElementById('postSubmitStatus');if((!content&&!selectedFiles.length)||b.disabled)return;b.disabled=true;st.classList.remove('hidden');const uploaded=[];const urls=[];try{for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i];if(!f.type.startsWith('image/')||f.size>10*1024*1024)throw Error('Images must be valid files smaller than 10MB.');st.textContent=`Uploading image ${i+1} of ${selectedFiles.length}…`;const path=`${currentUserId}/${crypto.randomUUID()}_${f.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;const u=await _supabase.storage.from('orbit-images').upload(path,f);if(u.error)throw u.error;uploaded.push(path);urls.push(_supabase.storage.from('orbit-images').getPublicUrl(path).data.publicUrl)}st.textContent='Publishing to your campus…';const r=await _supabase.from('orbit_feed').insert([{content,images:urls,school_tag:userUniversity,poster_name:userFullName,poster_id:currentUserId}]).select(ORBIT_POST_COLUMNS).single();if(r.error)throw r.error;const p={...r.data,likeCount:0,likedByCurrentUser:false,commentCount:0,savedByCurrentUser:false};orbitState.posts.set(p.id,p);orbitFeedLoadedAll=false;await orbitProfiles([p]);
+        const validMentions=orbitComposerMentions.filter(m=>m?.id&&m.id!==currentUserId&&new RegExp('(^|\\s)@'+String(m.name||'').replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?=\\s|$)','i').test(content));
+        if(validMentions.length){const {error:mentionError}=await _supabase.from('orbit_post_mentions').insert(validMentions.map(m=>({post_id:p.id,mentioned_user_id:m.id})));if(mentionError)console.warn('Orbit mention save failed',mentionError);}
+        closePostModal();orbitRender();if(window.scrollY<220)scrollTo({top:0,behavior:'smooth'})}catch(e){console.error('Orbit post failed',e);st.textContent=e.message||'Unable to publish. Please try again.';if(uploaded.length){try{await _supabase.storage.from('orbit-images').remove(uploaded)}catch(cleanupError){console.warn('Orbit orphan cleanup failed',cleanupError)}}}finally{b.disabled=false}}
+(function(){const i=document.getElementById('orbitSearchInput');if(i)i.addEventListener('input',()=>{clearTimeout(orbitState.timer);orbitState.timer=setTimeout(()=>{orbitState.search=i.value.trim();document.getElementById('orbitSearchClear').classList.toggle('hidden',!orbitState.search);orbitRender()},280)});const c=document.getElementById('postContent');if(c)c.addEventListener('input',()=>{document.getElementById('postCharCount').textContent=`${c.value.length} / 5000`;const q=orbitComposerMentionQuery(c.value);clearTimeout(orbitMentionTimer);if(q!==null){orbitMentionTimer=setTimeout(()=>loadOrbitMentionSuggestions(q),160)}else document.getElementById('orbitMentionList')?.classList.add('hidden')});document.addEventListener('click',e=>{if(!e.target.closest('.orbit-menu-wrap'))document.querySelectorAll('.orbit-menu-panel').forEach(x=>x.classList.add('hidden'));if(!e.target.closest('.orbit-mention-picker'))document.getElementById('orbitMentionList')?.classList.add('hidden')});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOrbitMediaViewer();closeOrbitNotifications();closeOrbitLikes();closeOrbitPublicProfilePage()}})})();
 
 
 /* ============================================================
