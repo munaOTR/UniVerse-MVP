@@ -600,7 +600,562 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
 @media (max-width:640px){.whisper-shell{padding-bottom:6rem}.whisper-composer{padding:14px;border-radius:22px}.whisper-textarea{min-height:115px;font-size:14px}.whisper-composer-footer{align-items:flex-end}.whisper-submit{min-height:42px;padding:0 14px}.whisper-card{padding:15px;border-radius:20px}.whisper-content{font-size:14px}.whisper-action{flex:1;justify-content:center;min-width:0}.whisper-action span{display:none}.whisper-modal{padding:12px}.whisper-dialog{border-radius:20px}}
 
 </style>
-<link id="universe-mobile-app-css" rel="stylesheet" href="/mobile-app.css">
+<link id="universe-mobile-app-css" rel="stylesheet" href="/mobile-app.css"><style id="campus-chat-whatsapp-overrides">
+/* ============================================================
+   Campus Chat only — WhatsApp-inspired responsive surface.
+   This block intentionally targets #chatPage/.chat-* only.
+   ============================================================ */
+#chatPage{min-width:0;width:100%;}
+#chatPage .chat-shell{min-width:0;width:100%;}
+#chatPage .chat-workspace{
+    grid-template-columns:minmax(290px,34%) minmax(0,1fr);
+    width:100%;
+    height:min(calc(100dvh - 170px),820px);
+    min-height:560px;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;
+    background:#0b141a;
+    box-shadow:0 22px 70px rgba(0,0,0,.28);
+}
+#chatPage .chat-sidebar{
+    min-width:0;
+    background:#0b141a;
+    border-right:1px solid rgba(255,255,255,.08);
+}
+#chatPage .chat-sidebar>div:first-child{
+    min-height:72px;
+    padding:15px 16px 11px;
+    background:#111b21;
+    border-bottom:1px solid rgba(255,255,255,.055);
+}
+#chatPage .chat-conversation-list{padding:6px;}
+#chatPage .chat-conversation-item{
+    min-height:68px;
+    gap:12px;
+    padding:10px 11px;
+    margin:1px 0;
+    border-radius:10px;
+}
+#chatPage .chat-conversation-item.active{box-shadow:inset 3px 0 0 #22c55e;background:rgba(34,197,94,.10);}
+#chatPage .chat-list-avatar-wrap{width:48px;height:48px;}
+#chatPage .chat-list-avatar-wrap .chat-avatar{width:48px;height:48px;}
+#chatPage .chat-preview-name{font-size:13px;}
+#chatPage .chat-preview{font-size:11px;line-height:1.35;}
+#chatPage .chat-list-time{font-size:9px;}
+#chatPage .chat-unread{background:#25d366;color:#062e16;font-size:9px;}
+#chatPage .chat-conversation-view{
+    min-width:0;
+    min-height:0;
+    background:#0b141a;
+    isolation:isolate;
+}
+#chatPage .chat-conversation-view:before{
+    z-index:-1;
+    opacity:.32;
+    background-image:
+      radial-gradient(rgba(255,255,255,.045) .75px,transparent .75px),
+      linear-gradient(rgba(34,197,94,.018),rgba(34,197,94,.018));
+    background-size:19px 19px,100% 100%;
+}
+#chatPage .chat-conversation-header{
+    min-height:64px;
+    padding:8px 12px;
+    background:#202c33;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    box-shadow:0 1px 0 rgba(0,0,0,.18);
+}
+#chatPage .chat-header-profile{padding:3px 5px;border-radius:10px;}
+#chatPage .chat-avatar-lg{width:42px;height:42px;}
+#chatPage .chat-header-name{font-size:13px;}
+#chatPage .chat-header-status{font-size:9px;}
+#chatPage .chat-icon-btn{width:40px;height:40px;border-radius:10px;}
+#chatPage .chat-message-list{
+    padding:22px clamp(16px,3.5vw,48px);
+    overscroll-behavior-y:contain;
+    scrollbar-gutter:stable;
+}
+#chatPage .chat-date-separator{margin:14px 0;font-size:8px;}
+#chatPage .chat-date-separator span{
+    padding:5px 10px;
+    border-radius:999px;
+    background:rgba(17,27,33,.78);
+    border:1px solid rgba(255,255,255,.05);
+    color:#94a3b8;
+    letter-spacing:.08em;
+}
+#chatPage .chat-bubble-row{margin:3px 0;}
+#chatPage .chat-bubble{
+    max-width:min(74%,660px);
+    padding:8px 10px 6px;
+    border-radius:9px;
+    box-shadow:0 1px 1px rgba(0,0,0,.16);
+}
+#chatPage .chat-bubble.received{background:#202c33;border:0;border-top-left-radius:4px;color:#e9edef;}
+#chatPage .chat-bubble.sent{background:#005c4b;border:0;border-top-right-radius:4px;color:#e9edef;}
+#chatPage .chat-bubble-content{font-size:13px;line-height:1.45;}
+#chatPage .chat-meta{font-size:8px;color:#8696a0;}
+#chatPage .chat-bubble.sent .chat-meta{color:#a8c7c0;}
+#chatPage .chat-composer{
+    margin:8px 12px 12px;
+    padding:5px 6px 5px 10px;
+    min-height:50px;
+    border-radius:16px;
+    background:#202c33;
+    border:1px solid rgba(255,255,255,.045);
+    box-shadow:0 4px 18px rgba(0,0,0,.16);
+}
+#chatPage .chat-composer-icon{width:38px;height:38px;border-radius:12px;}
+#chatPage .chat-input{font-size:13px!important;line-height:1.45;padding:.7rem .25rem!important;}
+#chatPage .chat-send-btn{width:42px;height:42px;border-radius:50%;}
+#chatPage .chat-new-message{bottom:76px;background:#202c33;border-color:rgba(34,197,94,.28);}
+#chatPage .chat-typing-indicator{padding:0 22px 7px;font-size:9px;}
+#chatPage .chat-request-rail{background:#111b21;border-bottom-color:rgba(255,255,255,.07);}
+#chatPage .chat-request-chip{background:#182229;border-color:rgba(255,255,255,.07);}
+#chatPage .chat-menu{top:55px;right:10px;background:#202c33;}
+#chatPage .chat-empty{padding:28px;}
+#chatPage .chat-empty-orbit{width:68px;height:68px;}
+
+/* Desktop: let Chat use the screen width while every unrelated page keeps its original main width. */
+@media (min-width:768px){
+    #chatPage{
+        width:min(calc(100vw - 48px),1080px);
+        max-width:none;
+        margin-left:50%;
+        transform:translateX(-50%);
+    }
+}
+
+/* Mobile: true two-state app-shell — conversations OR one active chat. */
+@media (max-width:767px){
+    #chatPage{
+        width:calc(100% + 2rem)!important;
+        margin-left:-1rem!important;
+        margin-right:-1rem!important;
+        padding:0!important;
+    }
+    #chatPage .chat-shell{gap:0!important;}
+    #chatPage .chat-shell>div:first-child{
+        flex-direction:row!important;
+        align-items:center!important;
+        justify-content:space-between!important;
+        gap:10px!important;
+        padding:4px 12px 12px!important;
+    }
+    #chatPage .chat-shell>div:first-child>div:first-child{min-width:0;}
+    #chatPage .chat-shell>div:first-child>div:first-child>p:first-child{display:none;}
+    #chatPage .chat-shell>div:first-child>div:first-child>p:last-child{display:none;}
+    #chatPage .chat-shell>div:first-child h2{font-size:20px!important;line-height:1.15;}
+    #chatPage #chatSearchToggle,
+    #chatPage #chatNewButton{
+        flex:0 0 42px!important;
+        width:42px!important;
+        height:42px!important;
+        min-height:42px!important;
+        padding:0!important;
+        border-radius:50%!important;
+    }
+    #chatPage #chatSearchToggle span,
+    #chatPage #chatNewButton span{display:none;}
+    #chatPage .chat-discovery{margin:0 12px 10px;}
+    #chatPage .chat-discovery-toggle{min-height:46px;border-radius:14px;}
+    #chatPage .chat-workspace{
+        display:block;
+        position:relative;
+        width:100%;
+        height:calc(var(--chat-vh, 100dvh) - 154px);
+        min-height:0;
+        border-radius:0;
+        border-left:0;
+        border-right:0;
+        border-bottom:0;
+        box-shadow:none;
+    }
+    #chatPage .chat-sidebar{
+        position:relative;
+        z-index:3;
+        display:flex;
+        width:100%;
+        height:100%;
+        border-right:0;
+        background:#0b141a;
+    }
+    #chatPage .chat-sidebar>div:first-child{
+        min-height:64px;
+        padding:9px 12px;
+    }
+    #chatPage .chat-conversation-list{padding:3px 4px 90px;}
+    #chatPage .chat-conversation-item{
+        min-height:72px;
+        padding:10px 12px;
+        border-radius:8px;
+    }
+    #chatPage .chat-conversation-item.active{box-shadow:inset 3px 0 0 #22c55e;}
+    #chatPage .chat-conversation-view{
+        display:none!important;
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        z-index:8;
+    }
+    #chatPage .chat-workspace.chat-conversation-open .chat-sidebar{display:none!important;}
+    #chatPage .chat-workspace.chat-conversation-open .chat-conversation-view{display:flex!important;}
+    #chatPage .chat-workspace:not(.chat-conversation-open) .chat-request-rail:not(.hidden){
+        position:absolute;
+        left:0;right:0;top:0;
+        z-index:12;
+        box-shadow:0 5px 18px rgba(0,0,0,.18);
+    }
+    #chatPage .chat-workspace:not(.chat-conversation-open):has(.chat-request-rail:not(.hidden)) .chat-sidebar{padding-top:88px;}
+    #chatPage .chat-conversation-header{
+        min-height:60px;
+        padding:7px 8px;
+        padding-top:max(7px,env(safe-area-inset-top));
+    }
+    #chatPage .chat-header-profile{gap:8px;padding:3px 2px;}
+    #chatPage .chat-header-avatar-wrap .chat-avatar{width:40px;height:40px;}
+    #chatPage .chat-message-list{padding:12px 8px 16px;}
+    #chatPage .chat-bubble{max-width:89%;padding:7px 9px 5px;}
+    #chatPage .chat-bubble-content{font-size:13px;line-height:1.4;}
+    #chatPage .chat-composer{
+        margin:5px 7px max(6px,env(safe-area-inset-bottom));
+        min-height:48px;
+        padding:4px 5px 4px 8px;
+        border-radius:14px;
+    }
+    #chatPage .chat-composer-icon{width:36px;height:36px;}
+    #chatPage .chat-send-btn{width:38px;height:38px;}
+    #chatPage .chat-input{font-size:14px!important;min-height:38px;}
+    #chatPage .chat-menu{top:55px;right:7px;width:min(205px,calc(100vw - 26px));}
+    #chatPage .chat-new-message{bottom:70px;}
+    #chatPage .chat-modal-backdrop{padding:0;align-items:flex-end;}
+    #chatPage .chat-modal{width:100%;max-width:none;max-height:92dvh;border-radius:20px 20px 0 0;}
+}
+@media (max-width:380px){
+    #chatPage .chat-bubble{max-width:93%;}
+    #chatPage .chat-workspace{height:calc(var(--chat-vh, 100dvh) - 148px);}
+    #chatPage .chat-conversation-item{min-height:68px;padding-inline:10px;}
+    #chatPage .chat-list-avatar-wrap,#chatPage .chat-list-avatar-wrap .chat-avatar{width:44px;height:44px;}
+}
+body.light-mode #chatPage .chat-workspace{background:#efeae2;border-color:rgba(15,23,42,.08);}
+body.light-mode #chatPage .chat-sidebar{background:#fff;}
+body.light-mode #chatPage .chat-sidebar>div:first-child{background:#f0f2f5;border-color:rgba(15,23,42,.07);}
+body.light-mode #chatPage .chat-conversation-view{background:#efeae2;}
+body.light-mode #chatPage .chat-conversation-view:before{opacity:.12;}
+body.light-mode #chatPage .chat-conversation-header{background:#f0f2f5;border-color:rgba(15,23,42,.08);}
+body.light-mode #chatPage .chat-bubble.received{background:#fff;color:#111827;}
+body.light-mode #chatPage .chat-bubble.sent{background:#d9fdd3;color:#102a1d;}
+body.light-mode #chatPage .chat-bubble.sent .chat-meta{color:#5d7e68;}
+body.light-mode #chatPage .chat-composer{background:#f0f2f5;border-color:rgba(15,23,42,.08);}
+body.light-mode #chatPage .chat-input{color:#111827!important;}
+body.light-mode #chatPage .chat-request-rail{background:#fff;}
+body.light-mode #chatPage .chat-request-chip{background:#f8fafc;}
+
+<style id="campus-chat-production-overrides">
+/* ============================================================
+   Campus Chat — production mobile shell
+   Scoped strictly to #chatPage/.chat-*.
+   ============================================================ */
+#chatPage,
+#chatPage * { box-sizing:border-box; }
+
+#chatPage .chat-workspace { isolation:isolate; }
+#chatPage .chat-conversation-view { min-width:0; min-height:0; }
+#chatPage .chat-header-profile { min-width:0; flex:1 1 auto; }
+#chatPage .chat-header-copy { min-width:0; }
+#chatPage .chat-header-name,
+#chatPage .chat-header-status { overflow:hidden; text-overflow:ellipsis; }
+#chatPage .chat-composer { align-items:flex-end; }
+#chatPage .chat-input {
+    min-width:0;
+    max-height:120px;
+    overflow-y:auto;
+    overflow-wrap:anywhere;
+    white-space:pre-wrap;
+    resize:none;
+}
+#chatPage .chat-composer-icon:disabled {
+    opacity:.42;
+    cursor:not-allowed;
+}
+#chatPage .chat-request-rail { flex:0 0 auto; }
+#chatPage .chat-workspace.chat-conversation-open .chat-request-rail {
+    display:none !important;
+}
+#chatPage .chat-message-list {
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+}
+#chatPage .chat-conversation-list {
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+}
+#chatPage .chat-menu {
+    max-width:calc(100vw - 24px);
+}
+#chatPage .chat-bubble-content {
+    overflow-wrap:anywhere;
+    word-break:break-word;
+}
+
+/* Lock only while a mobile Campus Chat conversation is active. */
+html.chat-conversation-lock,
+body.chat-conversation-lock {
+    overscroll-behavior:none;
+}
+body.chat-conversation-lock {
+    overflow:hidden !important;
+}
+
+@media (max-width:767px) {
+    /* Conversation = an actual app screen, not a card inside the dashboard. */
+    #chatPage.chat-conversation-screen {
+        position:fixed !important;
+        inset:var(--chat-vv-top, 0px) 0 auto 0 !important;
+        width:100vw !important;
+        height:var(--chat-vh, 100dvh) !important;
+        max-height:var(--chat-vh, 100dvh) !important;
+        min-height:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        z-index:240 !important;
+        overflow:hidden !important;
+        background:#0b141a;
+        transform:none !important;
+    }
+    #chatPage.chat-conversation-screen .chat-shell {
+        width:100% !important;
+        height:100% !important;
+        min-height:0 !important;
+        margin:0 !important;
+        display:block !important;
+    }
+    #chatPage.chat-conversation-screen .chat-shell > div:not(.chat-workspace) {
+        display:none !important;
+    }
+    #chatPage.chat-conversation-screen .chat-workspace {
+        position:absolute !important;
+        inset:0 !important;
+        display:block !important;
+        width:100% !important;
+        height:100% !important;
+        min-height:0 !important;
+        max-height:none !important;
+        border:0 !important;
+        border-radius:0 !important;
+        box-shadow:none !important;
+    }
+    #chatPage.chat-conversation-screen .chat-sidebar {
+        display:none !important;
+    }
+    #chatPage.chat-conversation-screen .chat-conversation-view {
+        position:absolute !important;
+        inset:0 !important;
+        display:flex !important;
+        width:100% !important;
+        height:100% !important;
+        min-height:0 !important;
+        max-height:none !important;
+        border-radius:0 !important;
+    }
+    #chatPage.chat-conversation-screen .chat-active-conversation,
+    #chatPage.chat-conversation-screen #chatActiveConversation {
+        width:100% !important;
+        height:100% !important;
+        min-height:0 !important;
+    }
+    #chatPage .chat-conversation-header {
+        flex:0 0 auto;
+        min-height:60px;
+        padding:
+            max(7px, env(safe-area-inset-top))
+            8px
+            7px;
+    }
+    #chatPage .chat-header-profile {
+        gap:7px;
+        padding:2px 1px;
+    }
+    #chatPage .chat-header-avatar-wrap .chat-avatar {
+        width:40px;
+        height:40px;
+    }
+    #chatPage .chat-header-name {
+        font-size:13px;
+        line-height:1.2;
+    }
+    #chatPage .chat-header-status {
+        font-size:9px;
+        line-height:1.2;
+    }
+    #chatPage .chat-icon-btn {
+        width:40px;
+        height:40px;
+        min-width:40px;
+        min-height:40px;
+        flex:0 0 40px;
+        border-radius:11px;
+    }
+    #chatPage #chatBackButton,
+    #chatPage #chatMoreButton {
+        flex:0 0 40px;
+    }
+    #chatPage .chat-message-list {
+        flex:1 1 auto;
+        min-height:0;
+        padding:10px 8px 14px;
+        scrollbar-gutter:auto;
+    }
+    #chatPage .chat-date-separator {
+        margin:11px 0;
+        font-size:7px;
+    }
+    #chatPage .chat-date-separator span {
+        padding:4px 8px;
+    }
+    #chatPage .chat-bubble-row {
+        margin:2px 0;
+    }
+    #chatPage .chat-bubble {
+        max-width:88%;
+        padding:7px 8px 5px;
+        border-radius:10px;
+    }
+    #chatPage .chat-bubble-content {
+        font-size:13px;
+        line-height:1.42;
+    }
+    #chatPage .chat-meta {
+        font-size:8px;
+        gap:4px;
+    }
+    #chatPage .chat-typing-indicator {
+        flex:0 0 auto;
+        min-height:22px;
+        padding:0 11px 5px;
+    }
+    #chatPage .chat-composer {
+        flex:0 0 auto;
+        min-height:48px;
+        margin:4px 7px 0;
+        margin-bottom:max(7px, env(safe-area-inset-bottom));
+        padding:4px 5px 4px 7px;
+        border-radius:15px;
+    }
+    #chatPage .chat-composer-icon {
+        width:36px;
+        height:36px;
+        min-width:36px;
+        border-radius:11px;
+    }
+    #chatPage .chat-send-btn {
+        width:38px;
+        height:38px;
+        min-width:38px;
+        border-radius:12px;
+        flex:0 0 38px;
+    }
+    #chatPage .chat-input {
+        min-height:38px;
+        max-height:120px;
+        font-size:14px !important;
+        line-height:1.4;
+        padding:9px 2px !important;
+    }
+    #chatPage .chat-composer-status {
+        flex:0 0 auto;
+        min-height:0;
+        padding:0 10px max(4px, env(safe-area-inset-bottom)) 10px;
+    }
+    #chatPage .chat-new-message {
+        left:50%;
+        bottom:78px;
+        max-width:calc(100% - 24px);
+        white-space:nowrap;
+    }
+    #chatPage #chatLoadOlder {
+        z-index:4;
+        align-self:center;
+        margin:5px auto -2px;
+        min-height:32px;
+    }
+    #chatPage .chat-menu {
+        top:58px;
+        right:7px;
+        width:min(210px, calc(100vw - 22px));
+    }
+    #chatPage .chat-empty-state {
+        padding:24px 16px;
+    }
+    #chatPage .chat-modal-backdrop {
+        z-index:270;
+    }
+}
+
+@media (max-width:380px) {
+    #chatPage .chat-conversation-header {
+        min-height:58px;
+        padding-left:5px;
+        padding-right:5px;
+    }
+    #chatPage .chat-header-profile {
+        gap:5px;
+    }
+    #chatPage .chat-header-avatar-wrap .chat-avatar {
+        width:38px;
+        height:38px;
+    }
+    #chatPage .chat-header-name { font-size:12.5px; }
+    #chatPage .chat-header-status { font-size:8px; }
+    #chatPage .chat-icon-btn,
+    #chatPage #chatBackButton,
+    #chatPage #chatMoreButton {
+        width:38px;
+        height:38px;
+        min-width:38px;
+        min-height:38px;
+        flex-basis:38px;
+        border-radius:10px;
+    }
+    #chatPage .chat-message-list {
+        padding-left:6px;
+        padding-right:6px;
+    }
+    #chatPage .chat-bubble {
+        max-width:91%;
+        padding-left:8px;
+        padding-right:8px;
+    }
+    #chatPage .chat-bubble-content { font-size:12.5px; }
+    #chatPage .chat-composer {
+        margin-left:5px;
+        margin-right:5px;
+    }
+    #chatPage .chat-send-btn {
+        width:37px;
+        height:37px;
+        min-width:37px;
+        flex-basis:37px;
+    }
+}
+</style>
+
+
+<style id="universeicos-device-notifications">
+    .device-notification-prompt{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);z-index:210;width:min(92vw,430px);padding:14px 15px;border:1px solid rgba(34,197,94,.22);border-radius:18px;background:rgba(8,14,25,.96);backdrop-filter:blur(18px);box-shadow:0 22px 70px rgba(0,0,0,.38);display:none}
+    .device-notification-prompt.show{display:block;animation:deviceNotifIn .22s ease-out}
+    .device-notification-prompt h4{font-size:.75rem;font-weight:900;color:#f8fafc}.device-notification-prompt p{font-size:.62rem;line-height:1.5;color:#94a3b8;margin-top:3px}
+    .device-notification-prompt-actions{display:flex;gap:7px;margin-top:10px}.device-notification-prompt button{min-height:36px;padding:7px 11px;border-radius:10px;font-size:.62rem;font-weight:900}
+    .device-notification-enable{background:#22c55e;color:#052e16}.device-notification-later{background:rgba(255,255,255,.05);color:#cbd5e1;border:1px solid rgba(255,255,255,.08)}
+    .device-notification-status{font-size:.58rem;color:#4ade80;margin-top:6px;min-height:13px}
+    body.light-mode .device-notification-prompt{background:rgba(255,255,255,.98);border-color:rgba(16,185,129,.2);box-shadow:0 22px 70px rgba(16,24,40,.18)}
+    body.light-mode .device-notification-prompt h4{color:#0f172a}body.light-mode .device-notification-prompt p{color:#64748b}
+    @keyframes deviceNotifIn{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+    @media(max-width:640px){.device-notification-prompt{bottom:78px;width:calc(100vw - 24px);padding:12px}.device-notification-prompt-actions button{flex:1}}
+</style>
+
 </head>
 <body class="min-h-screen pb-32">
 
@@ -664,7 +1219,18 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
 
     </main>
 
-    <div id="logoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-[100] flex items-center justify-center p-6">
+    
+<div id="deviceNotificationPrompt" class="device-notification-prompt" role="status" aria-live="polite">
+    <h4><i class="far fa-bell text-green-400 mr-1"></i> Stay updated on UniVerse ICOS</h4>
+    <p>Enable device notifications for new messages, message requests, mentions, reactions and other important campus activity.</p>
+    <div class="device-notification-prompt-actions">
+        <button type="button" class="device-notification-enable" onclick="enableDeviceNotifications()">Enable notifications</button>
+        <button type="button" class="device-notification-later" onclick="dismissDeviceNotificationPrompt()">Not now</button>
+    </div>
+    <div id="deviceNotificationPromptStatus" class="device-notification-status"></div>
+</div>
+
+<div id="logoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-[100] flex items-center justify-center p-6">
         <div class="glass-card p-8 rounded-[2.5rem] w-full max-w-xs text-center border-white/20 shadow-2xl">
             <div class="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i class="fas fa-sign-out-alt text-2xl"></i>
@@ -986,10 +1552,10 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
                     <span><i class="fas fa-lock"></i><span>Privacy Settings</span></span>
                     <span class="text-[8px] font-black uppercase tracking-widest">Coming Soon</span>
                 </div>
-                <div class="profile-setting-row profile-setting-row-disabled">
-                    <span><i class="far fa-bell"></i><span>Notification Preferences</span></span>
-                    <span class="text-[8px] font-black uppercase tracking-widest">Coming Soon</span>
-                </div>
+                <button type="button" onclick="openDeviceNotificationSettings()" class="profile-setting-row">
+                    <span><i class="far fa-bell"></i><span>Device Notifications</span></span>
+                    <span id="deviceNotificationSettingStatus" class="text-[8px] font-black uppercase tracking-widest text-slate-500">Not enabled</span>
+                </button>
                 <div class="profile-setting-row profile-setting-row-disabled">
                     <span><i class="fas fa-key"></i><span>Change Password</span></span>
                     <span class="text-[8px] font-black uppercase tracking-widest">Coming Soon</span>
@@ -1132,12 +1698,15 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
                         <div id="chatActiveConversation" class="hidden h-full min-h-0 flex flex-col">
                             <header class="chat-conversation-header">
                                 <button type="button" id="chatBackButton" class="chat-icon-btn md:hidden" aria-label="Back to conversations"><i class="fas fa-arrow-left"></i></button>
-                                <button type="button" id="chatHeaderProfile" class="chat-header-profile">
+                                <button type="button" id="chatHeaderProfile" class="chat-header-profile" aria-label="Open student profile">
                                     <span class="chat-header-avatar-wrap"><span id="chatHeaderAvatar" class="chat-avatar chat-avatar-lg">?</span><span id="chatHeaderOnlineDot" class="chat-header-online-dot"></span></span>
                                     <span class="chat-header-copy">
                                         <span id="chatHeaderName" class="chat-header-name">Student</span>
                                         <span id="chatHeaderStatus" class="chat-header-status">Offline</span>
                                     </span>
+                                </button>
+                                <button type="button" id="chatMoreButton" class="chat-icon-btn" aria-label="Conversation options" aria-expanded="false" aria-controls="chatMoreMenu">
+                                    <i class="fas fa-ellipsis-vertical"></i>
                                 </button>
                                 <div id="chatMoreMenu" class="chat-menu hidden" role="menu">
                                     <button type="button" data-chat-action="profile"><i class="far fa-user"></i> View Profile</button>
@@ -1152,8 +1721,8 @@ body.light-mode .study-empty{border-color:rgba(15,23,42,.1)}
                             <button type="button" id="chatNewMessageIndicator" class="chat-new-message hidden" aria-label="Jump to newest message"><i class="fas fa-arrow-down"></i> New message</button>
                             <div id="chatTypingIndicator" class="chat-typing-indicator hidden"><span class="chat-typing-avatar"><i class="fas fa-ellipsis"></i></span><span>Typing</span><span class="chat-typing-dots"><i></i><i></i><i></i></span></div>
                             <form id="chatComposer" class="chat-composer">
-                                <button type="button" class="chat-composer-icon" aria-label="Add attachment" title="Attachments are coming soon"><i class="fas fa-plus"></i></button>
-                                <input id="chatMessageInput" class="chat-input" type="text" maxlength="2000" autocomplete="off" placeholder="Type a message…" aria-label="Type a message">
+                                <button type="button" class="chat-composer-icon" aria-label="Add attachment" title="Attachments are coming soon" disabled aria-disabled="true"><i class="fas fa-plus"></i></button>
+                                <textarea id="chatMessageInput" class="chat-input" rows="1" maxlength="2000" autocomplete="off" enterkeyhint="send" spellcheck="true" placeholder="Type a message…" aria-label="Type a message"></textarea>
                                 <button type="submit" class="chat-send-btn" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
                             </form>
                             <div id="chatComposerStatus" class="chat-composer-status" role="status" aria-live="polite"></div>
@@ -1511,6 +2080,7 @@ let appState = {
 
             // Orbit realtime is initialized only after the authenticated campus is known.
             setupOrbitRealtime();
+            setupUniverseICOSDeviceNotifications();
             updateOrbitNotificationBadge();
 
             loadFeed(true);
@@ -2667,21 +3237,44 @@ async function handleChatRequestAction(requestId,action){const button=document.q
 async function openChatConversation(conversationId){
     const conversation=chatState.conversations.find(c=>c.id===conversationId);
     if(!conversation)return;
+
     chatState.activeConversationId=conversationId;
     ++chatState.messageRequestId;
     chatHideNewMessage();
     chatSetComposerStatus('');
+
+    const page=document.getElementById('chatPage');
+    const workspace=document.querySelector('#chatPage .chat-workspace');
+    const conversationView=document.getElementById('chatConversationView');
+
     document.getElementById('chatEmptyConversation')?.classList.add('hidden');
     document.getElementById('chatActiveConversation')?.classList.remove('hidden');
-    document.getElementById('chatConversationView')?.classList.add('chat-mobile-open');
+    conversationView?.classList.add('chat-mobile-open');
+    workspace?.classList.add('chat-conversation-open');
+
+    /* Mobile gets a true full-screen conversation surface. */
+    if(window.matchMedia('(max-width: 767px)').matches){
+        page?.classList.add('chat-conversation-screen');
+        document.documentElement.classList.add('chat-conversation-lock');
+        document.body.classList.add('chat-conversation-lock');
+        document.getElementById('chatMessageInput')?.focus({preventScroll:true});
+    }
+
     const s=conversation.participant||{full_name:conversation.title||'Conversation'};
     const avatarHost=document.getElementById('chatHeaderAvatar');
-    if(avatarHost)avatarHost.innerHTML=s.avatar_url?`<img src="${chatEscape(s.avatar_url)}" alt="" class="w-full h-full object-cover rounded-full">`:chatEscape(chatInitials(s.full_name));
+    if(avatarHost)avatarHost.innerHTML=s.avatar_url
+        ? `<img src="${chatEscape(s.avatar_url)}" alt="${chatEscape(s.full_name||'Student')}" class="w-full h-full object-cover rounded-full" loading="eager">`
+        : chatEscape(chatInitials(s.full_name));
     const nameEl=document.getElementById('chatHeaderName');if(nameEl)nameEl.textContent=s.full_name||'Student';
+
     updateChatPresenceUI();
-    const box=document.getElementById('chatMessageList');if(box)box.innerHTML=chatConversationSkeleton(5);
+
+    const box=document.getElementById('chatMessageList');
+    if(box)box.innerHTML=chatConversationSkeleton(5);
+
     renderChatConversations();
     await chatTrackPresence({conversation_id:conversationId,typing:false});
+
     try{
         await chat.markAsRead(conversationId);
         conversation.unread=0;
@@ -2690,6 +3283,7 @@ async function openChatConversation(conversationId){
         chatState.messagePagination[conversationId]={hasMore:false,oldest:null};
         const requestId=chatState.messageRequestId;
         await chat.loadMessages(conversationId,requestId);
+        if(chatState.activeConversationId!==conversationId)return;
         renderChatMessages(chatState.messages[conversationId]||[],{forceBottom:true});
         updateChatOlderButton(conversationId);
         await chatTrackPresence({conversation_id:conversationId,typing:false});
@@ -2699,6 +3293,7 @@ async function openChatConversation(conversationId){
         chatError(error);
     }
 }
+
 function updateChatOlderButton(conversationId){const b=document.getElementById('chatLoadOlder'),p=chatState.messagePagination[conversationId]||{};if(!b)return;b.classList.toggle('hidden',!p.hasMore);b.disabled=false;}
 async function loadOlderChatMessages(){const cid=chatState.activeConversationId;if(!cid)return;const p=chatState.messagePagination[cid]||{};if(!p.hasMore||!p.oldest)return;const box=document.getElementById('chatMessageList');const previousHeight=box?.scrollHeight||0;const previousTop=box?.scrollTop||0;const b=document.getElementById('chatLoadOlder');if(b){b.disabled=true;b.textContent='Loading…';}try{await chat.loadMessages(cid,chatState.messageRequestId,p.oldest);renderChatMessages(chatState.messages[cid]||[],{forceBottom:false});if(box)box.scrollTop=box.scrollHeight-previousHeight+previousTop;updateChatOlderButton(cid);}catch(e){chatError(e);if(b){b.disabled=false;b.textContent='Load older messages';}}}
 function chatMessageReceipt(message,conversation){
@@ -2842,10 +3437,55 @@ function openChatProfile(){const c=chatState.conversations.find(x=>x.id===chatSt
 function openChatBlock(){const c=chatState.conversations.find(x=>x.id===chatState.activeConversationId);if(!c?.participant)return;const s=c.participant;chatOpenModal(`<div class="p-5"><div class="w-11 h-11 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center"><i class="fas fa-ban"></i></div><h3 class="text-lg font-bold text-white mt-4">Block this student?</h3><p class="text-xs text-slate-500 mt-2">This conversation will be removed from your chat list. Messaging restrictions are enforced by Supabase.</p><div class="flex gap-2 mt-6"><button type="button" class="chat-action-btn flex-1" onclick="chatCloseModal()">Cancel</button><button type="button" class="chat-action-btn flex-1 !text-red-300 !border-red-500/20" onclick="confirmChatBlock('${chatEscape(s.id)}')">Block</button></div></div>`);}
 async function confirmChatBlock(userId){try{await chat.blockUser(userId);chatState.conversations=chatState.conversations.filter(c=>c.participantId!==userId);chatState.activeConversationId=null;chatState.messageRequestId++;chatCloseModal();closeChatConversation();renderChatConversations();document.getElementById('chatActiveConversation')?.classList.add('hidden');document.getElementById('chatEmptyConversation')?.classList.remove('hidden');chatSetComposerStatus('');await chat.refreshRequests();}catch(error){chatError(error);chatOpenModal(`<div class="p-5"><h3 class="text-lg font-bold text-white">Block failed</h3><p class="text-xs text-slate-500 mt-2">We couldn't complete the block request.</p><button type="button" class="chat-primary-btn w-full mt-5" onclick="chatCloseModal()">Close</button></div>`);}}
 function openChatReport(){const c=chatState.conversations.find(x=>x.id===chatState.activeConversationId);if(!c?.participant)return;const s=c.participant;chatOpenModal(`<div class="p-5"><div class="flex items-center justify-between"><h3 class="text-lg font-bold text-white">Report conversation</h3><button type="button" class="chat-icon-btn" onclick="chatCloseModal()" aria-label="Close"><i class="fas fa-times"></i></button></div><p class="text-xs text-slate-500 mt-1">Tell us what happened with ${chatEscape(s.full_name||'this student')}.</p><div class="grid grid-cols-2 gap-2 mt-5">${['Spam','Harassment','Inappropriate content','Fake account'].map(r=>`<button type="button" class="chat-action-btn report-reason" data-reason="${chatEscape(r)}">${chatEscape(r)}</button>`).join('')}<button type="button" class="chat-action-btn report-reason col-span-2" data-reason="Other">Other</button></div><textarea id="chatReportNote" class="w-full mt-3 rounded-xl bg-white/5 border border-white/10 p-3 text-xs text-white outline-none" rows="3" maxlength="1000" placeholder="Optional note"></textarea><p id="chatReportStatus" class="text-[10px] text-red-400 mt-2 min-h-[14px]"></p><button type="button" id="chatReportSubmit" class="chat-primary-btn w-full mt-3">Submit Report</button></div>`);let reason='';const modal=document.getElementById('chatTransientModal');modal?.querySelectorAll('.report-reason').forEach(b=>b.addEventListener('click',()=>{reason=b.dataset.reason||'';modal.querySelectorAll('.report-reason').forEach(x=>x.classList.remove('!bg-green-500/10','!text-green-400'));b.classList.add('!bg-green-500/10','!text-green-400');}));document.getElementById('chatReportSubmit')?.addEventListener('click',async()=>{const submit=document.getElementById('chatReportSubmit'),status=document.getElementById('chatReportStatus'),note=document.getElementById('chatReportNote')?.value||'';if(!reason){if(status)status.textContent='Select a reason first.';return;}submit.disabled=true;submit.textContent='Submitting…';try{await chat.reportUser({reportedUserId:s.id,conversationId:c.id,reason,note});chatCloseModal();chatSetComposerStatus('Report submitted. Thank you for helping keep Campus Chat safe.');}catch(error){chatError(error);submit.disabled=false;submit.textContent='Submit Report';if(status)status.textContent='We could not submit the report. Please try again.';}});}
-function closeChatConversation(){chatState.activeConversationId=null;chatState.messageRequestId++;clearTimeout(chatState.typingTimer);chatTrackPresence({conversation_id:null,typing:false});chatHideNewMessage();chatSetComposerStatus('');document.getElementById('chatTypingIndicator')?.classList.add('hidden');document.getElementById('chatConversationView')?.classList.remove('chat-mobile-open');document.getElementById('chatMoreMenu')?.classList.add('hidden');document.getElementById('chatMoreButton')?.setAttribute('aria-expanded','false');document.getElementById('chatActiveConversation')?.classList.add('hidden');document.getElementById('chatEmptyConversation')?.classList.remove('hidden');renderChatConversations();}
+function closeChatConversation(){
+    chatState.activeConversationId=null;
+    chatState.messageRequestId++;
+    clearTimeout(chatState.typingTimer);
+    chatTrackPresence({conversation_id:null,typing:false});
+    chatHideNewMessage();
+    chatSetComposerStatus('');
+    document.getElementById('chatTypingIndicator')?.classList.add('hidden');
+
+    const input=document.getElementById('chatMessageInput');
+    if(input){
+        input.value='';
+        input.style.height='';
+    }
+
+    document.getElementById('chatConversationView')?.classList.remove('chat-mobile-open');
+    document.querySelector('#chatPage .chat-workspace')?.classList.remove('chat-conversation-open');
+    document.getElementById('chatPage')?.classList.remove('chat-conversation-screen');
+
+    document.documentElement.classList.remove('chat-conversation-lock');
+    document.body.classList.remove('chat-conversation-lock');
+
+    document.getElementById('chatMoreMenu')?.classList.add('hidden');
+    document.getElementById('chatMoreButton')?.setAttribute('aria-expanded','false');
+    document.getElementById('chatActiveConversation')?.classList.add('hidden');
+    document.getElementById('chatEmptyConversation')?.classList.remove('hidden');
+    renderChatConversations();
+}
 
 async function initCampusChat(){if(chatState.initializing)return;chatState.initializing=true;const list=document.getElementById('chatConversationList');if(list&&!chatState.initialized)list.innerHTML=chatConversationSkeleton(4);try{const user=await chat.getSessionUser();if(!user)return;currentUserId=user.id;if(!userFullName)userFullName=user.user_metadata?.full_name||'';if(!userUniversity)userUniversity=user.user_metadata?.university||'';await chat.loadCurrentProfile();await chat.refreshConversations();await chat.refreshRequests();chat.subscribeRealtime();subscribeChatPresence();chatState.initialized=true;}catch(error){if(list)list.innerHTML=`<div class="py-10 px-3 text-center"><div class="text-red-400 text-xl mb-3"><i class="fas fa-circle-exclamation"></i></div><p class="text-xs font-bold text-slate-300">Couldn't load Campus Chat.</p><p class="text-[10px] text-slate-600 mt-2">Please try again.</p><button type="button" class="chat-action-btn mt-3" data-chat-retry-init>Try Again</button></div>`;list?.querySelector('[data-chat-retry-init]')?.addEventListener('click',initCampusChat);chatError(error);}finally{chatState.initializing=false;}if(chatState.initialized)bindCampusChatEvents();}
+function syncCampusChatViewport(){
+    const page=document.getElementById('chatPage');
+    if(!page)return;
+    const vv=window.visualViewport;
+    const h=Math.round(vv?.height||window.innerHeight||0);
+    const top=Math.round(vv?.offsetTop||0);
+    if(h>0)page.style.setProperty('--chat-vh',`${h}px`);
+    page.style.setProperty('--chat-vv-top',`${top}px`);
+}
+function bindCampusChatViewport(){
+    if(window.__uniVerseCampusChatViewportBound)return;
+    window.__uniVerseCampusChatViewportBound=true;
+    syncCampusChatViewport();
+    window.addEventListener('resize',syncCampusChatViewport,{passive:true});
+    window.visualViewport?.addEventListener('resize',syncCampusChatViewport,{passive:true});
+}
+
 function bindCampusChatEvents(){
+    bindCampusChatViewport();
     if(window.__uniVerseCampusChatBound)return;
     window.__uniVerseCampusChatBound=true;
     document.getElementById('chatDiscoveryToggle')?.addEventListener('click',openChatDiscovery);
@@ -2863,12 +3503,28 @@ function bindCampusChatEvents(){
     document.querySelectorAll('#chatMoreMenu [data-chat-action]').forEach(b=>b.addEventListener('click',()=>{const a=b.dataset.chatAction;if(a==='mute')return;document.getElementById('chatMoreMenu')?.classList.add('hidden');document.getElementById('chatMoreButton')?.setAttribute('aria-expanded','false');if(a==='profile')openChatProfile();else if(a==='block')openChatBlock();else if(a==='report')openChatReport();}));
     document.getElementById('chatNewMessageIndicator')?.addEventListener('click',()=>{chatScrollToBottom(true);const cid=chatState.activeConversationId;if(cid)chat.markAsRead(cid).then(()=>{const c=chatState.conversations.find(x=>x.id===cid);if(c)c.unread=0;renderChatConversations();renderChatMessages(chatState.messages[cid]||[],{forceBottom:true});}).catch(()=>{});});
     document.getElementById('chatMessageList')?.addEventListener('scroll',()=>{if(chatIsNearBottom()){chatHideNewMessage();const cid=chatState.activeConversationId;if(cid)chat.markAsRead(cid).then(()=>{const c=chatState.conversations.find(x=>x.id===cid);if(c)c.unread=0;renderChatConversations();renderChatMessages(chatState.messages[cid]||[],{forceBottom:false});}).catch(()=>{});}});
-    document.getElementById('chatMessageInput')?.addEventListener('input',()=>{
+    const chatMessageInput=document.getElementById('chatMessageInput');
+    const autoGrowChatInput=()=>{
+        if(!chatMessageInput)return;
+        chatMessageInput.style.height='auto';
+        const nextHeight=Math.min(chatMessageInput.scrollHeight,120);
+        chatMessageInput.style.height=`${Math.max(38,nextHeight)}px`;
+        chatMessageInput.style.overflowY=chatMessageInput.scrollHeight>120?'auto':'hidden';
+    };
+    chatMessageInput?.addEventListener('input',()=>{
+        autoGrowChatInput();
         clearTimeout(chatState.typingTimer);
-        chatTrackTyping(true);
+        chatTrackTyping(Boolean(chatMessageInput.value.trim()));
         chatState.typingTimer=setTimeout(()=>chatTrackTyping(false),1200);
     });
-    document.getElementById('chatMessageInput')?.addEventListener('blur',()=>{clearTimeout(chatState.typingTimer);chatTrackTyping(false);});
+    chatMessageInput?.addEventListener('keydown',e=>{
+        if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){
+            e.preventDefault();
+            document.getElementById('chatComposer')?.requestSubmit();
+        }
+    });
+    chatMessageInput?.addEventListener('blur',()=>{clearTimeout(chatState.typingTimer);chatTrackTyping(false);});
+    autoGrowChatInput();
     document.getElementById('chatComposer')?.addEventListener('submit',handleChatSend);
     document.getElementById('chatLoadOlder')?.addEventListener('click',loadOlderChatMessages);
     document.getElementById('chatRequestsRefresh')?.addEventListener('click',()=>chat.refreshRequests().catch(chatError));
@@ -3193,6 +3849,10 @@ const NAV_ITEMS = {
 
 function showPage(pageName) {
     const navPlus = document.getElementById('navPlusBtn');
+
+    // Chat-only cleanup: never leave the mobile conversation lock behind when
+    // the user navigates to another UniVERSE section.
+    if(pageName!=='chat' && typeof chatState!=='undefined' && chatState.activeConversationId) closeChatConversation();
 
     // Close any open modals when navigating
     closeScoutModal();
@@ -3822,7 +4482,7 @@ function orbitRealtimeKey(payload){const row=payload.new||payload.old||{};const 
 function orbitMarkRealtime(payload){const key=orbitRealtimeKey(payload);if(orbitState.realtimeSeen.has(key))return false;orbitState.realtimeSeen.add(key);if(orbitState.realtimeSeen.size>5000){const first=orbitState.realtimeSeen.values().next().value;orbitState.realtimeSeen.delete(first)}return true}
 function handleOrbitRealtime(payload){if(!orbitMarkRealtime(payload))return;const p=payload.new||payload.old;if(payload.table==='orbit_feed'){if(p?.school_tag&&p.school_tag!==userUniversity)return;if(payload.eventType==='INSERT'){if(orbitState.posts.has(p.id)||orbitState.newPosts.some(x=>x.id===p.id))return;if(window.scrollY<220){orbitProfiles([p]).then(()=>hydrateOrbitSocial([p])).then(()=>{if(!orbitState.posts.has(p.id))orbitState.posts.set(p.id,p);orbitRender()})}else{orbitState.newPosts.push(p);const b=document.getElementById('orbitNewPostsBanner');b.classList.remove('hidden');document.getElementById('orbitNewPostsCount').textContent=`${orbitState.newPosts.length} new post${orbitState.newPosts.length===1?'':'s'}`}}else if(payload.eventType==='UPDATE'){const existing=orbitState.posts.get(p.id);if(existing)orbitState.posts.set(p.id,{...existing,...p});else if(p.status==='active'&&p.visibility==='campus')orbitState.posts.set(p.id,p);orbitProfiles([p]).then(()=>orbitRender())}else if(payload.eventType==='DELETE'){orbitState.posts.delete(p.id);orbitState.newPosts=orbitState.newPosts.filter(x=>x.id!==p.id);document.getElementById('post-'+p.id)?.remove()}}else if(payload.table==='orbit_post_likes'){const post=orbitState.posts.get(p?.post_id);if(!post)return;const isOwn=p.user_id===currentUserId;if(isOwn&&orbitState.pendingLikes.has(p.post_id))return;if(payload.eventType==='INSERT'){if(isOwn){if(post.likedByCurrentUser)return;post.likedByCurrentUser=true}post.likeCount=(Number(post.likeCount)||0)+1}else if(payload.eventType==='DELETE'){if(isOwn&&!post.likedByCurrentUser)return;if(isOwn)post.likedByCurrentUser=false;post.likeCount=Math.max(0,(Number(post.likeCount)||0)-1)}patchOrbitPostSocial(post.id)}else if(payload.table==='orbit_comments'){const post=orbitState.posts.get(p?.post_id);if(!post)return;if(payload.eventType==='INSERT'){const loaded=orbitState.comments.get(post.id)||[],alreadyLoaded=loaded.some(x=>x.id===p.id);if(isOwnCommentEvent(p)&&orbitState.pendingComments.has(p.id)){orbitState.pendingComments.delete(p.id);if(!alreadyLoaded)orbitState.comments.set(post.id,[...loaded,p]);return}if(!alreadyLoaded)post.commentCount=(Number(post.commentCount)||0)+1;if(!alreadyLoaded&&orbitState.comments.has(post.id))orbitState.comments.set(post.id,[...loaded,p])}else if(payload.eventType==='DELETE'){if(orbitState.pendingDeletes.has(p.id)){orbitState.pendingDeletes.delete(p.id);return}post.commentCount=Math.max(0,(Number(post.commentCount)||0)-1);if(orbitState.comments.has(post.id))orbitState.comments.set(post.id,(orbitState.comments.get(post.id)||[]).filter(x=>x.id!==p.id))}const c=document.getElementById('comment-count-'+post.id);if(c)c.textContent=String(post.commentCount);if(!document.getElementById('commentSection-'+post.id)?.classList.contains('hidden')){const l=document.getElementById('commentList-'+post.id);if(l)l.innerHTML=orbitCommentRows(post.id)}}else if(payload.table==='orbit_post_saves'){if(p?.user_id!==currentUserId)return;const post=orbitState.posts.get(p.post_id);if(!post)return;if(orbitState.pendingSaves.has(p.post_id))return;post.savedByCurrentUser=payload.eventType==='INSERT';if(post.savedByCurrentUser)orbitState.saved.add(post.id);else orbitState.saved.delete(post.id);patchOrbitPostSocial(post.id)}}
 function isOwnCommentEvent(row){return row?.user_id===currentUserId}
-async function setupOrbitRealtime(){if(!currentUserId||orbitRealtimeChannel||orbitRealtimeStarting)return;orbitRealtimeStarting=true;try{orbitRealtimeChannel=_supabase.channel(`orbit-live-${currentUserId}`).on('postgres_changes',{event:'*',schema:'public',table:'orbit_feed'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_likes'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_comments'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_saves',filter:`user_id=eq.${currentUserId}`},handleOrbitRealtime).on('postgres_changes',{event:'INSERT',schema:'public',table:'notifications',filter:`user_id=eq.${currentUserId}`},()=>{updateOrbitNotificationBadge();if(!document.getElementById('orbitNotificationModal')?.classList.contains('hidden'))loadOrbitNotifications()});await orbitRealtimeChannel.subscribe()}catch(e){console.error('Orbit realtime setup failed',e);if(orbitRealtimeChannel){try{await _supabase.removeChannel(orbitRealtimeChannel)}catch(_){ }orbitRealtimeChannel=null}}finally{orbitRealtimeStarting=false}}
+async function setupOrbitRealtime(){if(!currentUserId||orbitRealtimeChannel||orbitRealtimeStarting)return;orbitRealtimeStarting=true;try{orbitRealtimeChannel=_supabase.channel(`orbit-live-${currentUserId}`).on('postgres_changes',{event:'*',schema:'public',table:'orbit_feed'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_likes'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_comments'},handleOrbitRealtime).on('postgres_changes',{event:'*',schema:'public',table:'orbit_post_saves',filter:`user_id=eq.${currentUserId}`},handleOrbitRealtime).on('postgres_changes',{event:'INSERT',schema:'public',table:'notifications',filter:`user_id=eq.${currentUserId}`},payload=>{updateOrbitNotificationBadge();if(!document.getElementById('orbitNotificationModal')?.classList.contains('hidden'))loadOrbitNotifications();universeICOSHandleNotificationInsert(payload.new)});await orbitRealtimeChannel.subscribe()}catch(e){console.error('Orbit realtime setup failed',e);if(orbitRealtimeChannel){try{await _supabase.removeChannel(orbitRealtimeChannel)}catch(_){ }orbitRealtimeChannel=null}}finally{orbitRealtimeStarting=false}}
 function orbitCleanupRealtime(){if(orbitRealtimeChannel){_supabase.removeChannel(orbitRealtimeChannel);orbitRealtimeChannel=null}}
 let orbitComposerMentions=[];
 let orbitMentionTimer=null;
@@ -4219,6 +4879,164 @@ function studyExploreTribes(){const modal=document.getElementById('studyResource
     const input=document.getElementById('studySearchInput');input?.addEventListener('input',studySearch);document.getElementById('studySearchClear')?.addEventListener('click',()=>{input.value='';studyState.query='';document.getElementById('studySearchClear').classList.add('hidden');studyState.page=0;studyReload();});input?.addEventListener('input',()=>document.getElementById('studySearchClear')?.classList.toggle('hidden',!input.value));document.getElementById('studyModalClose')?.addEventListener('click',studyCloseViewer);document.getElementById('studyResourceModal')?.addEventListener('click',e=>{if(e.target.id==='studyResourceModal')studyCloseViewer();});
     document.querySelectorAll('[onclick="showPage(\'study\')"]').forEach(el=>el.addEventListener('click',()=>{if(!studyState.loaded)window.setTimeout(()=>studyReload(),0);}));
 })();
+
+/* ============================================================
+   UniVerse ICOS — Device Notifications (scoped enhancement)
+   Foreground realtime + Web Push background notifications.
+   Requires the accompanying notifications-sw.js and Supabase
+   push_subscriptions / send-push setup.
+   ============================================================ */
+const UNIVERSEICOS_PUSH_VAPID_PUBLIC_KEY = 'REPLACE_WITH_YOUR_VAPID_PUBLIC_KEY';
+let universeICOSNotificationChannel = null;
+let universeICOSPushRegistration = null;
+let universeICOSPushSubscription = null;
+let universeICOSNotificationBooted = false;
+let universeICOSLastNotificationId = '';
+
+function universeICOSBase64ToUint8Array(base64String){
+    const padding='='.repeat((4-base64String.length%4)%4);
+    const base64=(base64String+padding).replace(/-/g,'+').replace(/_/g,'/');
+    const raw=atob(base64); return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)));
+}
+function universeICOSCanNotify(){
+    return typeof window.Notification!=='undefined' && Notification.permission==='granted';
+}
+function universeICOSNotificationIcon(){
+    return `${location.origin}/favicon.ico`;
+}
+function universeICOSShowDeviceNotification(notification){
+    if(!notification||notification.user_id&&notification.user_id!==currentUserId)return;
+    if(!universeICOSCanNotify())return;
+    if(notification.id&&notification.id===universeICOSLastNotificationId)return;
+    universeICOSLastNotificationId=notification.id||'';
+    const title=String(notification.title||'UniVerse ICOS');
+    const body=String(notification.body||'You have a new campus update.');
+    const options={
+        body, icon:notification.icon||universeICOSNotificationIcon(),
+        badge:notification.badge||universeICOSNotificationIcon(),
+        tag:`universeicos-${notification.id||notification.type||Date.now()}`,
+        renotify:true, data:{link:notification.link||'',notificationId:notification.id||''},
+        silent:false
+    };
+    try{
+        if(universeICOSPushRegistration?.showNotification) universeICOSPushRegistration.showNotification(title,options);
+        else new Notification(title,options);
+    }catch(e){console.warn('Device notification display failed',e);}
+}
+function universeICOSNotificationToast(notification){
+    const title=String(notification?.title||'Campus update');
+    const body=String(notification?.body||'');
+    if(typeof whisperShowToast==='function') whisperShowToast(`${title}${body?' — '+body:''}`);
+}
+async function universeICOSRequestPermission(){
+    if(typeof window.Notification==='undefined')throw new Error('This browser does not support device notifications.');
+    if(Notification.permission==='denied')throw new Error('Notifications are blocked for this site in your browser settings.');
+    return await Notification.requestPermission();
+}
+async function universeICOSRegisterPush(){
+    if(!('serviceWorker' in navigator))throw new Error('Background notifications are not supported by this browser.');
+    if(!('PushManager' in window))throw new Error('Push notifications are not supported by this browser.');
+    universeICOSPushRegistration=await navigator.serviceWorker.register('/notifications-sw.js',{scope:'/'});
+    await navigator.serviceWorker.ready;
+    let sub=await universeICOSPushRegistration.pushManager.getSubscription();
+    if(!sub){
+        if(!UNIVERSEICOS_PUSH_VAPID_PUBLIC_KEY||UNIVERSEICOS_PUSH_VAPID_PUBLIC_KEY.startsWith('REPLACE_')){
+            throw new Error('Push service is not configured yet. Add the production VAPID public key.');
+        }
+        sub=await universeICOSPushRegistration.pushManager.subscribe({
+            userVisibleOnly:true,
+            applicationServerKey:universeICOSBase64ToUint8Array(UNIVERSEICOS_PUSH_VAPID_PUBLIC_KEY)
+        });
+    }
+    universeICOSPushSubscription=sub;
+    const json=sub.toJSON();
+    const endpoint=String(sub.endpoint||'');
+    if(!endpoint)throw new Error('The browser did not return a push endpoint.');
+    const keys=json.keys||{};
+    const {error}=await _supabase.from('push_subscriptions').upsert({
+        user_id:currentUserId,
+        endpoint,
+        p256dh:keys.p256dh||null,
+        auth:keys.auth||null,
+        subscription:json,
+        user_agent:navigator.userAgent.slice(0,500),
+        updated_at:new Date().toISOString()
+    },{onConflict:'endpoint'});
+    if(error)throw error;
+    return sub;
+}
+async function enableDeviceNotifications(){
+    const status=document.getElementById('deviceNotificationPromptStatus');
+    const setting=document.getElementById('deviceNotificationSettingStatus');
+    try{
+        if(status)status.textContent='Requesting permission…';
+        const permission=await universeICOSRequestPermission();
+        if(permission!=='granted')throw new Error(permission==='denied'?'Notifications were blocked.':'Notification permission was not granted.');
+        await universeICOSRegisterPush();
+        if(status)status.textContent='Notifications are enabled on this device.';
+        if(setting){setting.textContent='Enabled';setting.className='text-[8px] font-black uppercase tracking-widest text-green-500';}
+        localStorage.setItem('universeicos_device_notifications','enabled');
+        setTimeout(()=>document.getElementById('deviceNotificationPrompt')?.classList.remove('show'),1200);
+    }catch(e){
+        console.error('Device notification setup failed',e);
+        if(status)status.textContent=e?.message||'Could not enable notifications right now.';
+        if(setting)setting.textContent='Setup needed';
+    }
+}
+function dismissDeviceNotificationPrompt(){
+    document.getElementById('deviceNotificationPrompt')?.classList.remove('show');
+    localStorage.setItem('universeicos_device_notifications_prompted','1');
+}
+async function openDeviceNotificationSettings(){
+    const prompt=document.getElementById('deviceNotificationPrompt');
+    if(prompt)prompt.classList.add('show');
+    if(typeof Notification!=='undefined' && Notification.permission==='granted'){
+        try{await universeICOSRegisterPush();document.getElementById('deviceNotificationPromptStatus').textContent='Notifications are enabled on this device.';document.getElementById('deviceNotificationSettingStatus').textContent='Enabled';}catch(e){document.getElementById('deviceNotificationPromptStatus').textContent=e.message||'Push setup failed.';}
+    }else if(typeof Notification!=='undefined' && Notification.permission==='denied'){
+        document.getElementById('deviceNotificationPromptStatus').textContent='Notifications are blocked. Allow them in your browser/site settings, then return here.';
+    }
+}
+function universeICOSMaybePromptNotifications(){
+    if(!currentUserId||typeof Notification==='undefined')return;
+    const state=localStorage.getItem('universeicos_device_notifications');
+    const prompted=localStorage.getItem('universeicos_device_notifications_prompted');
+    const show=Notification.permission==='default'&&state!=='enabled'&&!prompted;
+    if(show)setTimeout(()=>document.getElementById('deviceNotificationPrompt')?.classList.add('show'),1600);
+    const setting=document.getElementById('deviceNotificationSettingStatus');
+    if(setting){
+        setting.textContent=Notification.permission==='granted'?'Enabled':Notification.permission==='denied'?'Blocked':'Not enabled';
+        setting.className=`text-[8px] font-black uppercase tracking-widest ${Notification.permission==='granted'?'text-green-500':Notification.permission==='denied'?'text-red-400':'text-slate-500'}`;
+    }
+}
+async function universeICOSHandleNotificationInsert(row){
+    if(!row||row.user_id!==currentUserId)return;
+    if(row.id&&row.id===universeICOSLastNotificationId)return;
+    updateOrbitNotificationBadge?.();
+    if(!document.getElementById('orbitNotificationModal')?.classList.contains('hidden'))loadOrbitNotifications?.();
+    universeICOSNotificationToast(row);
+    universeICOSShowDeviceNotification(row);
+}
+async function setupUniverseICOSDeviceNotifications(){
+    if(!currentUserId||universeICOSNotificationBooted)return;
+    universeICOSNotificationBooted=true;
+    try{
+        if('serviceWorker' in navigator){
+            universeICOSPushRegistration=await navigator.serviceWorker.register('/notifications-sw.js',{scope:'/'});
+        }
+    }catch(e){console.warn('Notification service worker unavailable',e);}
+    try{
+        universeICOSNotificationChannel=_supabase.channel(`device-notifications-${currentUserId}`)
+            .on('postgres_changes',{event:'INSERT',schema:'public',table:'notifications',filter:`user_id=eq.${currentUserId}`},
+                payload=>universeICOSHandleNotificationInsert(payload.new))
+            .subscribe((status,error)=>{if(status==='CHANNEL_ERROR'||status==='TIMED_OUT')console.warn('Device notification realtime failed',error||status);});
+    }catch(e){console.warn('Device notification realtime setup failed',e);}
+    universeICOSMaybePromptNotifications();
+}
+function universeICOSCleanupDeviceNotifications(){
+    if(universeICOSNotificationChannel){_supabase.removeChannel(universeICOSNotificationChannel);universeICOSNotificationChannel=null;}
+    universeICOSNotificationBooted=false;
+}
+
 </script>
 
     <div class="fixed bottom-0 left-0 right-0 p-2 md:p-4 z-[100]">
