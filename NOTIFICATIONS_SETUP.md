@@ -1,30 +1,28 @@
 # UniVerse ICOS — Device Notifications
 
 ## What is included
-- `index.html`: keeps the existing app intact and adds device-notification permission, push subscription registration, foreground realtime popups, and notification settings.
+- `dashboard.html`: keeps the existing app intact and adds device-notification permission, push subscription registration, foreground realtime popups, and notification settings.
 - `notifications-sw.js`: browser service worker for background Web Push.
-- `push_notifications.sql`: push subscription table + RLS + notification triggers for direct messages, message requests, Orbit likes/comments/mentions.
+- `push_notifications.sql`: push subscription table + RLS + notification triggers for direct messages and message requests, while preserving the existing Orbit notification triggers.
 - `send-push.ts`: Supabase Edge Function that sends Web Push to every active device subscription for a notification.
 
-## Required Supabase setup
-1. Run `push_notifications.sql` in Supabase SQL Editor.
-2. Deploy `send-push.ts` as an Edge Function named `send-push`.
-3. Set Edge Function secrets:
-   - Generate a VAPID key pair once with `npx web-push generate-vapid-keys`.
-   - Put the generated public key into `UNIVERSEICOS_PUSH_VAPID_PUBLIC_KEY` in `index.html`.
-   - Store the generated private key only as the Edge Function secret `VAPID_PRIVATE_KEY`.
-   - Store the generated public key as the Edge Function secret `VAPID_PUBLIC_KEY` too.
-   - `VAPID_SUBJECT=mailto:notifications@universeicos.app`
-   - `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (Supabase normally supplies these to Edge Functions; never put the service-role key in `index.html`).
-4. In Supabase Dashboard → Database → Webhooks, create a webhook for:
-   - Table: `public.notifications`
-   - Event: `INSERT`
-   - URL: the deployed `send-push` Edge Function URL
-   - Send the database webhook payload to the function.
-5. Serve `index.html` and `notifications-sw.js` from the same HTTPS origin. The service worker must be reachable at `/notifications-sw.js`.
-6. Users must tap **Enable notifications** once per browser/device. After that, the browser can display notifications even when UniVerse ICOS is not the active tab, subject to OS/browser notification permissions.
+## Current deployment state
+- The notification database migration has been applied to the UniVerse ICOS Supabase project.
+- The `send-push` Edge Function has been deployed with JWT verification enabled.
+- The Vercel production app serves `dashboard.html` and `notifications-sw.js` over HTTPS.
+- Foreground device notifications can operate after browser permission is granted even before the VAPID background-push credentials are configured.
+
+## Required for background notifications when the app is closed
+1. Generate a fresh VAPID key pair with `npx web-push generate-vapid-keys` if the project does not already have one.
+2. Put the public key into `UNIVERSEICOS_PUSH_VAPID_PUBLIC_KEY` in `dashboard.html`.
+3. Store the public/private VAPID keys as Edge Function secrets `VAPID_PUBLIC_KEY` and `VAPID_PRIVATE_KEY`.
+4. Set `VAPID_SUBJECT=mailto:notifications@universeicos.app`.
+5. Ensure `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are available to the Edge Function.
+6. Create a Supabase Database Webhook for `public.notifications` → `INSERT` and point it at the deployed `send-push` function. The webhook must authenticate to the JWT-protected function.
+7. Keep `notifications-sw.js` at the site root so it is reachable at `/notifications-sw.js`.
+8. Each user must tap **Enable notifications** once on each browser/device.
 
 ## Important
-Do not commit VAPID private keys. If the project already has a VAPID key pair, reuse it. Otherwise generate a fresh pair with `npx web-push generate-vapid-keys`. Never expose the private key in client-side code or Git.
+Never commit VAPID private keys or the Supabase service-role key. The frontend must only contain the VAPID public key. Background Web Push is subject to browser/OS notification support and permissions.
 
-The frontend only displays notifications that exist in `public.notifications`. The included SQL makes the core targeted MVP activities create those notification rows. Generic campus posts are intentionally not broadcast to every student because that would create notification spam.
+The frontend displays notifications that exist in `public.notifications`. The database notification pipeline targets user-relevant MVP activity instead of broadcasting every campus event to every student.
